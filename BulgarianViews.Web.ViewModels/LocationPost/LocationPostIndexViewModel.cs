@@ -12,8 +12,7 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         public required string Title { get; set; }
         public required string Description { get; set; }
         public required string PhotoURL { get; set; }
-        public DateTime DateCreated { get; set; }
-
+       
         public required string UserName { get; set; }
         public required string PublisherId { get; set; }
 

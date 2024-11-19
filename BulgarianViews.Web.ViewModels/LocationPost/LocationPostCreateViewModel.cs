@@ -1,5 +1,6 @@
 ﻿using BulgarianViews.Data.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,25 +16,24 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         [Required]
         [MinLength(TitleMinLength)]
         [MaxLength(TitleMaxLength)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         [MinLength(DescriptionMinLength)]
         [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
-        
-        public IFormFile PhotoURL { get; set; }
+        [Required(ErrorMessage = "Please upload a photo.")]
+        public IFormFile PhotoURL { get; set; } = null!;
 
-
-        [Required]
+        [Required(ErrorMessage = "Please select a tag.")]
         public Guid TagsId { get; set; }
-        public List<Tag> Tags { get; set; } = new List<Tag>();
+
+        public IEnumerable<SelectListItem> Tags { get; set; } = new List<SelectListItem>();
 
 
 
 
 
-        
     }
 }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BulgarianViews.Web.ViewModels.LocationPost.LocationPostIndexViewModel>
+
+@{
+    ViewData["Title"] = "Beautiful Places in Bulgaria";
+}
+
+<h1 class="text-center my-4">Beautiful Places in Bulgaria</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-4">Add New Location</a>
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="max-height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title text-truncate">@post.Title</h5>
+                    <p class="card-text text-muted">@post.Description.Substring(0, Math.Min(post.Description.Length, 100))...</p>
+                </div>
+               
+            </div>
+        </div>
+    }
+}
+</div>
+
