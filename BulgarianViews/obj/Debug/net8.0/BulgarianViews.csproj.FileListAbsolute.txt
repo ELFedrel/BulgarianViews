@@ -314,3 +314,4 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\refint\Bul
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.genruntimeconfig.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\ref\BulgarianViews.dll
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.sourcelink.json

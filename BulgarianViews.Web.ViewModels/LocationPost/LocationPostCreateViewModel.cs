@@ -23,13 +23,13 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; } = null!;
 
-        [Required(ErrorMessage = "Please upload a photo.")]
+        [Required]
         public IFormFile PhotoURL { get; set; } = null!;
 
-        [Required(ErrorMessage = "Please select a tag.")]
-        public Guid TagsId { get; set; }
+        [Required]
+        public Guid TagId { get; set; }
 
-        public IEnumerable<SelectListItem> Tags { get; set; } = new List<SelectListItem>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
 
 
 

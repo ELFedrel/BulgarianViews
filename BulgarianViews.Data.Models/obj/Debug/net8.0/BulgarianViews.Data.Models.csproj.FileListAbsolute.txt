@@ -28,3 +28,4 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data.Models\obj\Debug\net8.
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data.Models\obj\Debug\net8.0\refint\BulgarianViews.Data.Models.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data.Models\obj\Debug\net8.0\BulgarianViews.Data.Models.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data.Models\obj\Debug\net8.0\ref\BulgarianViews.Data.Models.dll
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data.Models\obj\Debug\net8.0\BulgarianViews.Data.Models.sourcelink.json

@@ -57,22 +57,28 @@ namespace BulgarianViews.Controllers
                 return View(model);
             }
 
-            // Save the uploaded photo to the server
             string photoUrl = null;
-            if (model.PhotoURL != null)
+            if (model.PhotoURL != null && model.PhotoURL.Length > 0)
             {
-                // Define the path to save the uploaded file
+                // Define the folder for uploads
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+                // Ensure the folder exists
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
                 var uniqueFileName = $"{Guid.NewGuid()}_{model.PhotoURL.FileName}";
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                // Save the file to the specified path
+                // Save the file
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await model.PhotoURL.CopyToAsync(fileStream);
                 }
 
-                // Set the photoUrl to save in the database
+                // Set the photo URL to be saved in the database
                 photoUrl = $"/images/{uniqueFileName}";
             }
 
@@ -84,6 +90,7 @@ namespace BulgarianViews.Controllers
                 Description = model.Description,
                 PhotoURL = photoUrl,
                 UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                TagId = model.TagId
                 
 
             };
@@ -93,6 +100,8 @@ namespace BulgarianViews.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
 
     }
 }

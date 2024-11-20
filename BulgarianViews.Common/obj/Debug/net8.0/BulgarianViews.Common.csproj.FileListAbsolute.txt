@@ -20,3 +20,4 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Common\obj\Debug\net8.0\Bul
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Common\obj\Debug\net8.0\refint\BulgarianViews.Common.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Common\obj\Debug\net8.0\BulgarianViews.Common.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Common\obj\Debug\net8.0\ref\BulgarianViews.Common.dll
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Common\obj\Debug\net8.0\BulgarianViews.Common.sourcelink.json
