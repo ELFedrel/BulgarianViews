@@ -3,6 +3,7 @@ using BulgarianViews.Data.Models;
 using BulgarianViews.Web.ViewModels.LocationPost;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -100,6 +101,96 @@ namespace BulgarianViews.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var post = await _context.LocationPosts
+                .Include(p => p.Tag)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            var model = new LocationPostEditViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                ExistingPhotoURL = post.PhotoURL,
+                TagId = post.TagId,
+                Tags = await _context.Tags.ToListAsync()
+                
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, LocationPostEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Reload the tags if the model state is invalid
+                model.Tags = await _context.Tags.ToListAsync();
+                return View(model);
+            }
+
+            var post = await _context.LocationPosts
+                .Include(p => p.Tag)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            
+            post.Title = model.Title;
+            post.Description = model.Description;
+            post.TagId = model.TagId;
+
+            
+            if (model.NewPhoto != null)
+            {
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var uniqueFileName = $"{Guid.NewGuid()}_{model.NewPhoto.FileName}";
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.NewPhoto.CopyToAsync(fileStream);
+                }
+
+                
+                if (!string.IsNullOrEmpty(post.PhotoURL))
+                {
+                    var oldPhotoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", post.PhotoURL.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPhotoPath))
+                    {
+                        System.IO.File.Delete(oldPhotoPath);
+                    }
+                }
+
+                post.PhotoURL = $"/images/{uniqueFileName}";
+            }
+
+            
+           
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
 
 

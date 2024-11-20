@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TQrDdYWpbEJrdDjYPULjfgycUfeaC/4lr/KMnDiOQRo=",
+  "Hash": "CaIXYBzF+fEYKOwX+C1f8DPw4VDwKfmX1iuXDKM6ccs=",
   "Source": "BulgarianViews",
   "BasePath": "_content/BulgarianViews",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\27b4af80-3425-498e-be96-8ea5e6018de3_ghhhh.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\b630aa23-7e33-400f-bb94-39774b0e169f_DSC_8559web-300x200.jpg",

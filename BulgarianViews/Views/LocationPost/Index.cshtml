@@ -18,6 +18,13 @@
                     <h5 class="card-title text-truncate">@post.Title</h5>
                     <p class="card-text text-muted">@post.Description.Substring(0, Math.Min(post.Description.Length, 100))...</p>
                 </div>
+                <div class="card-footer text-center">
+                    
+                    <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-info btn-sm">View Details</a>
+
+                    
+                    <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning btn-sm">Edit</a>
+                </div>
                
             </div>
         </div>
