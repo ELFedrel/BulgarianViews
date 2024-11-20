@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BulgarianViews.Data.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,8 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         [Required]
         public Guid TagId { get; set; }
 
-      
+        public List<Tag> Tags { get; set; } = new List<Tag>();
+
+
     }
 }

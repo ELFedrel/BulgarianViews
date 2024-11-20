@@ -1,0 +1,54 @@
+﻿@model BulgarianViews.Web.ViewModels.LocationPost.LocationPostEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Location";
+}
+
+<h1 class="text-center my-4">Edit Location</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="shadow p-4 rounded bg-light">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group mb-3">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Existing Photo</label>
+        <div>
+            @if (!string.IsNullOrEmpty(Model.ExistingPhotoURL))
+            {
+                <img src="@Model.ExistingPhotoURL" alt="Current Photo" class="img-thumbnail mb-3" style="max-width: 200px;" />
+            }
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="NewPhoto" class="form-label">Upload New Photo</label>
+        <input asp-for="NewPhoto" class="form-control" type="file" />
+        <span asp-validation-for="NewPhoto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.TagId" class="form-label-add-edit">Select Fishing Technique</label>
+        <select asp-for="@Model.TagId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.Tags, "Id", "Name"))">
+            <option value="">Select Fishing Technique...</option>
+        </select>
+        <span asp-validation-for="@Model.TagId" class="text-danger"></span>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
