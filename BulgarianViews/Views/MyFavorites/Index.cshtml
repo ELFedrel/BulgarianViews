@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BulgarianViews.Web.ViewModels.LocationPost.FavoritesViewModel>
+
+<h1 class="text-center my-4">My Favorites</h1>
+
+@if (!Model.Any())
+{
+    <p class="text-center">You have no favorite locations yet.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var favorite in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@favorite.PhotoURL" class="card-img-top" alt="@favorite.Title" style="max-height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">@favorite.Title</h5>
+                        <p class="card-text text-muted">@favorite.Description.Substring(0, Math.Min(favorite.Description.Length, 100))...</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <form asp-action="Remove" asp-route-locationId="@favorite.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

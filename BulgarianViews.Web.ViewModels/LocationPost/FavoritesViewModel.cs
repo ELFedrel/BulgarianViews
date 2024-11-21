@@ -8,7 +8,7 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
 {
     public class FavoritesViewModel
     {
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string PhotoURL { get; set; } = null!;

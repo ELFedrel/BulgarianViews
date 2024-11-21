@@ -4,6 +4,7 @@ using BulgarianViews.Web.ViewModels.LocationPost;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BulgarianViews.Controllers
 {

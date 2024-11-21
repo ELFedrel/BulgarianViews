@@ -19,16 +19,19 @@
                     <p class="card-text text-muted">@post.Description.Substring(0, Math.Min(post.Description.Length, 100))...</p>
                 </div>
                 <div class="card-footer text-center">
-                    
+                    <!-- View Details Button -->
                     <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-info btn-sm">View Details</a>
 
-                    
+                    <!-- Edit Button -->
                     <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                    <!-- Add to Favorites Button -->
+                    <form asp-controller="MyFavorites" asp-action="Add" method="post" class="d-inline">
+                        <input type="hidden" name="locationId" value="@post.Id" />
+                        <button type="submit" class="btn btn-success btn-sm">Add to My Favorites</button>
+                    </form>
                 </div>
-               
             </div>
         </div>
     }
-
 </div>
-
