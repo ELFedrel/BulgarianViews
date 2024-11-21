@@ -15,6 +15,7 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
        
         public required string UserName { get; set; }
         public required string PublisherId { get; set; }
+      
 
 
 

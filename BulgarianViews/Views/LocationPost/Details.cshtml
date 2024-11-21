@@ -7,15 +7,20 @@
 <h1 class="text-center my-4">Details for @Model.Title</h1>
 
 <div class="card shadow-lg mb-4">
-    <img src="@Model.PhotoURL" class="card-img-top" alt="@Model.Title" style="max-height: 400px; object-fit: cover;">
+    <img src="@Model.PhotoURL" class="card-img-top" alt="@Model.Title" style="max-height: 300px; object-fit: cover;">
     <div class="card-body">
         <h5 class="card-title">Description</h5>
         <p class="card-text">@Model.Description</p>
         <hr />
         <p class="card-text"><strong>Tag:</strong> @Model.TagName</p>
         <p class="card-text"><strong>Posted by:</strong> @Model.UserName</p>
-        
+
+       
+      
     </div>
 </div>
 
+
+
+<!-- Връщане към основния списък с местоположения -->
 <a href="@Url.Action("Index", "LocationPost")" class="btn btn-secondary">Back to List</a>

@@ -36,6 +36,7 @@ namespace BulgarianViews.Controllers
                     Title = f.Location.Title,
                     Description = f.Location.Description,
                     PhotoURL = f.Location.PhotoURL
+
                 })
                 .ToListAsync();
 
@@ -58,7 +59,8 @@ namespace BulgarianViews.Controllers
             if (existingFavorite != null)
             {
                 TempData["Error"] = "This post is already in your favorites!";
-                return RedirectToAction("Index", "LocationPost");
+                return RedirectToAction("Index", "MyFavorites");
+
             }
 
             var favorite = new FavoriteViews
@@ -71,7 +73,7 @@ namespace BulgarianViews.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Success"] = "Added to favorites!";
-            return RedirectToAction("Index", "LocationPost");
+            return RedirectToAction("Index", "MyFavorites");
         }
 
         // POST: Remove from Favorites
@@ -91,14 +93,14 @@ namespace BulgarianViews.Controllers
             if (favorite == null)
             {
                 TempData["Error"] = "This post is not in your favorites!";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Пренасочване към списъка с любими
             }
 
             _context.FavoriteViews.Remove(favorite);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Removed from favorites!";
-            return RedirectToAction(nameof(Index));
+            TempData["Success"] = "Removed from favorites!"; // Съобщение за успех
+            return RedirectToAction(nameof(Index)); // Пренасочване към списъка с любими
         }
     }
 }

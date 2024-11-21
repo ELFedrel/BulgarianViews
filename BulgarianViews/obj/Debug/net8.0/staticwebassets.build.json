@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/p/uWf0WFdZb7bA4q18HoftBt3/Uwv1rLyQc1+m1Lcw=",
+  "Hash": "m8plB/SQQ71s/cGwm8FyC5Mk/DvetmK2rh56guSqMIQ=",
   "Source": "BulgarianViews",
   "BasePath": "_content/BulgarianViews",
   "Mode": "Default",
@@ -1288,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\cdf2d852-7b70-43e7-a72c-bb6e60acb5c7_ehgdhy.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/cdf2d852-7b70-43e7-a72c-bb6e60acb5c7_ehgdhy.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cdf2d852-7b70-43e7-a72c-bb6e60acb5c7_ehgdhy.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\js\\site.js",

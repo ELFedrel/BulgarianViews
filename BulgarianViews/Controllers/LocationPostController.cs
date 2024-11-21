@@ -30,8 +30,8 @@ namespace BulgarianViews.Controllers
                    Title = lp.Title,
                    Description = lp.Description,
                    PhotoURL = lp.PhotoURL,
-                   UserName = lp.User.UserName,
-                   PublisherId = lp.UserId.ToString()
+                   UserName = lp.User.UserName ?? String.Empty,
+                   PublisherId = lp.UserId.ToString(),
                })
                .ToListAsync();
 
@@ -90,7 +90,7 @@ namespace BulgarianViews.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 PhotoURL = photoUrl,
-                UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                UserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)) ,
                 TagId = model.TagId
                 
 
@@ -114,6 +114,12 @@ namespace BulgarianViews.Controllers
                 return NotFound();
             }
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (post.UserId.ToString() != userId)
+            {
+                return Forbid(); 
+            }
+
             var model = new LocationPostEditViewModel
             {
                 Id = post.Id,
@@ -122,6 +128,7 @@ namespace BulgarianViews.Controllers
                 ExistingPhotoURL = post.PhotoURL,
                 TagId = post.TagId,
                 Tags = await _context.Tags.ToListAsync()
+                
                 
             };
 
@@ -146,6 +153,8 @@ namespace BulgarianViews.Controllers
             {
                 return NotFound();
             }
+
+
 
             
             post.Title = model.Title;
@@ -202,6 +211,7 @@ namespace BulgarianViews.Controllers
             {
                 return NotFound();
             }
+
 
             var model = new LocationPostDetailsViewModel
             {

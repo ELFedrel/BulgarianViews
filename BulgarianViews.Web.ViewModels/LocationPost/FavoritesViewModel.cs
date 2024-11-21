@@ -12,5 +12,7 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string PhotoURL { get; set; } = null!;
+
+       
     }
 }
