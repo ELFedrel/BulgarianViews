@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BulgarianViews.Web.ViewModels.LocationPost
 {
-    internal class FavoritesViewModel
+    public class FavoritesViewModel
     {
+        public Guid Id { get; set; } 
+        public string Title { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string PhotoURL { get; set; } = null!;
     }
 }
