@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CaIXYBzF+fEYKOwX+C1f8DPw4VDwKfmX1iuXDKM6ccs=",
+  "Hash": "/p/uWf0WFdZb7bA4q18HoftBt3/Uwv1rLyQc1+m1Lcw=",
   "Source": "BulgarianViews",
   "BasePath": "_content/BulgarianViews",
   "Mode": "Default",
@@ -1271,12 +1271,12 @@
       "OriginalItemSpec": "wwwroot\\images\\46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg"
     },
     {
-      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\b630aa23-7e33-400f-bb94-39774b0e169f_DSC_8559web-300x200.jpg",
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg",
       "SourceId": "BulgarianViews",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
       "BasePath": "_content/BulgarianViews",
-      "RelativePath": "images/b630aa23-7e33-400f-bb94-39774b0e169f_DSC_8559web-300x200.jpg",
+      "RelativePath": "images/7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1287,7 +1287,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\b630aa23-7e33-400f-bb94-39774b0e169f_DSC_8559web-300x200.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\js\\site.js",

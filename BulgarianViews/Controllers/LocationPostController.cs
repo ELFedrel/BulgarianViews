@@ -190,6 +190,34 @@ namespace BulgarianViews.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var post = await _context.LocationPosts
+                .Include(lp => lp.User)
+                .Include(lp => lp.Tag)
+                .FirstOrDefaultAsync(lp => lp.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            var model = new LocationPostDetailsViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description,
+                PhotoURL = post.PhotoURL,
+                UserName = post.User.UserName ?? String.Empty,
+                TagName = post.Tag.Name
+                
+            };
+
+            return View(model);
+        }
+
+
 
 
 
