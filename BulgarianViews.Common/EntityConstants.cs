@@ -12,6 +12,8 @@ namespace BulgarianViews.Common
         {
             public const int BioMinLength = 5;
             public const int BioMaxLength = 500;
+            public const int UserNameMinLength = 3;
+            public const int UserNameMaxLength = 20;
             //public const string DefaultProfilePictureURL = "/images/default-profile.png";
         }
 

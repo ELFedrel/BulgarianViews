@@ -21,4 +21,8 @@
     <ProjectReference Include="..\BulgarianViews.Web.ViewModels\BulgarianViews.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Profile\" />
+  </ItemGroup>
+
 </Project>
