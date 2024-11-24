@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BulgarianViews.Web.ViewModels.LocationPost.LocationPostIndexViewModel>
+﻿@using System.Security.Claims
+@model IEnumerable<BulgarianViews.Web.ViewModels.LocationPost.LocationPostIndexViewModel>
 
 @{
     ViewData["Title"] = "Beautiful Places in Bulgaria";
@@ -24,9 +25,10 @@
 
 
                     
-
-                    <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning btn-sm">Edit</a>
                     
+
+                  
                   
 
                     <!-- Add to Favorites Button -->

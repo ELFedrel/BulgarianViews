@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulgarianViews.Web.ViewModels.Comment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         public string UserName { get; set; } = null!;
 
         public string TagName { get; set; } = null!;
+
+        public List<CommentViewModel> Comments { get; set; } = new();
 
 
     }

@@ -68,7 +68,7 @@ namespace BulgarianViews.Controllers
             return PartialView("_Comments", comments);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id, Guid postId)

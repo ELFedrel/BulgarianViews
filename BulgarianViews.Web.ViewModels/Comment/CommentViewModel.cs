@@ -16,7 +16,9 @@ namespace BulgarianViews.Web.ViewModels.Comment
         [MaxLength(ContentMaxLength)]
         public string Content { get; set; } = null!;
 
-        public string UserName { get; set; } = null!; // Кой е оставил коментара
+        public string UserName { get; set; } = null!;
+
+        public Guid UserId { get; set; } 
         public DateTime DateCreated { get; set; }
     }
 }

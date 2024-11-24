@@ -1,4 +1,5 @@
-﻿@model BulgarianViews.Web.ViewModels.LocationPost.LocationPostDetailsViewModel
+﻿@using System.Security.Claims
+@model BulgarianViews.Web.ViewModels.LocationPost.LocationPostDetailsViewModel
 
 @{
     ViewData["Title"] = "Details - " + Model.Title;
@@ -14,13 +15,57 @@
         <hr />
         <p class="card-text"><strong>Tag:</strong> @Model.TagName</p>
         <p class="card-text"><strong>Posted by:</strong> @Model.UserName</p>
-
-       
-      
     </div>
 </div>
 
+<!-- Форма за добавяне на коментар -->
+<section class="mb-4">
+    <h5>Add a Comment</h5>
+    <form asp-action="Add" asp-controller="Comment" method="post">
+        <input type="hidden" name="LocationPostId" value="@Model.Id" />
+        <div class="form-group mb-2">
+            <textarea class="form-control" name="Content" rows="3" placeholder="Write your comment here..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Add Comment</button>
+    </form>
+</section>
+
+<section>
+    <h5>Comments</h5>
+    @if (!Model.Comments.Any())
+    {
+        <p>No comments yet. Be the first to comment!</p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach (var comment in Model.Comments)
+            {
+                <li class="list-group-item">
+                    <p class="mb-1">@comment.Content</p>
+                    <small class="text-muted">
+                        Posted by
+                        <!-- Линк към профила на коментатора -->
+                        <a asp-controller="Profile" asp-action="Details" asp-route-id="@comment.UserId">
+                            <strong>@comment.UserName</strong>
+                        </a>
+                        on @comment.DateCreated.ToString("yyyy-MM-dd HH:mm")
+                    </small>
+
+                    
+                    @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == comment.UserId.ToString())
+                    {
+                        <form asp-action="Delete" asp-controller="Comment" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@comment.Id" />
+                            <input type="hidden" name="postId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    }
+                </li>
+            }
+        </ul>
+    }
+</section>
 
 
-<!-- Връщане към основния списък с местоположения -->
-<a href="@Url.Action("Index", "LocationPost")" class="btn btn-secondary">Back to List</a>
+<a href="@Url.Action("Index", "LocationPost")" class="btn btn-secondary mt-3">Back to List</a>

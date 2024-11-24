@@ -41,7 +41,7 @@ namespace BulgarianViews.Controllers
             return View(model);
         }
 
-        // GET: Profile/Edit
+        [HttpGet]
         public async Task<IActionResult> Edit()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -64,7 +64,7 @@ namespace BulgarianViews.Controllers
             return View(model);
         }
 
-        // POST: Profile/Edit
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProfileEditViewModel model)
@@ -112,5 +112,27 @@ namespace BulgarianViews.Controllers
             TempData["Success"] = "Profile updated successfully!";
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProfileViewModel
+            {
+                UserName = user.UserName,
+                ProfilePictureURL = user.ProfilePictureURL ?? "/images/default-profile.png",
+                Bio = user.Bio
+            };
+
+            return View(model);
+        }
+
     }
 }

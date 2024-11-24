@@ -1,5 +1,6 @@
 ﻿using BulgarianViews.Data;
 using BulgarianViews.Data.Models;
+using BulgarianViews.Web.ViewModels.Comment;
 using BulgarianViews.Web.ViewModels.LocationPost;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -212,6 +213,18 @@ namespace BulgarianViews.Controllers
                 return NotFound();
             }
 
+            var comments = await _context.Comments
+                .Where(c => c.LocationPostId == id)
+                .Include(c => c.User)
+                .Select(c => new CommentViewModel
+                {
+                    Id = c.Id,
+                    Content = c.Content,
+                    UserName = c.User.UserName ?? "Unknown",
+                    UserId = c.UserId, // Включваме UserId
+                    DateCreated = c.DateCreated
+                })
+                .ToListAsync();
 
             var model = new LocationPostDetailsViewModel
             {
@@ -219,15 +232,17 @@ namespace BulgarianViews.Controllers
                 Title = post.Title,
                 Description = post.Description,
                 PhotoURL = post.PhotoURL,
-                UserName = post.User.UserName ?? String.Empty,
-                TagName = post.Tag.Name
-                
+                UserName = post.User.UserName ?? string.Empty,
+                TagName = post.Tag.Name,
+                Comments = comments
             };
 
             return View(model);
         }
 
-       
+
+
+
 
 
 
