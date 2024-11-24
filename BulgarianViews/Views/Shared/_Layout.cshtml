@@ -6,11 +6,10 @@
     <title>@ViewData["Title"] - BulgarianViews</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BulgarianViews.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BulgarianViews</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -23,17 +22,41 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="LocationPost" asp-action="Index">Locations</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LocationPost" asp-action="Index">Locations</a>
                         </li>
                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="LocationPost" asp-action="Create">Add Location</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LocationPost" asp-action="Create">Add Location</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="MyFavorites" asp-action="Index">My Favorites</a>
                         </li>
-
                     </ul>
+
+                    <!-- Зарежда _LoginPartial -->
                     <partial name="_LoginPartial" />
+
+                    <!-- Показване на меню за профил, ако потребителят е влязъл -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if (!string.IsNullOrEmpty(User.FindFirst("ProfilePictureURL")?.Value))
+                                    {
+                                        <img src="@User.FindFirst("ProfilePictureURL").Value" alt="Profile" class="rounded-circle" style="width: 30px; height: 30px;">
+                                    }
+                                    else
+                                    {
+                                        <img src="/images/default-profile.png" alt="Default Profile" class="rounded-circle" style="width: 30px; height: 30px;">
+                                    }
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index">View Profile</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Profile" asp-action="Edit">Edit Profile</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>

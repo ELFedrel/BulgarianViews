@@ -23,9 +23,13 @@ namespace BulgarianViews.Web.ViewModels.Profile
         public string? Bio { get; set; }
 
 
-        public string? ProfilePictureURL { get; set; }
+        
+        public IFormFile? ProfilePicture { get; set; }
 
         
+        public string? ProfilePictureURL { get; set; }
+
+
 
     }
 }

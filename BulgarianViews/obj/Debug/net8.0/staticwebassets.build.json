@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "m8plB/SQQ71s/cGwm8FyC5Mk/DvetmK2rh56guSqMIQ=",
+  "Hash": "4y7ZrdnC6ZrLohHf8oLQs2NbWRI2IO7++mTp2+ossy8=",
   "Source": "BulgarianViews",
   "BasePath": "_content/BulgarianViews",
   "Mode": "Default",
@@ -1233,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\17505b61-006e-4b22-9b3d-3b78866b10bd_DSC_8559web-300x200.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/17505b61-006e-4b22-9b3d-3b78866b10bd_DSC_8559web-300x200.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\17505b61-006e-4b22-9b3d-3b78866b10bd_DSC_8559web-300x200.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\27b4af80-3425-498e-be96-8ea5e6018de3_ghhhh.jpg",
       "SourceId": "BulgarianViews",
       "SourceType": "Discovered",
@@ -1252,12 +1271,12 @@
       "OriginalItemSpec": "wwwroot\\images\\27b4af80-3425-498e-be96-8ea5e6018de3_ghhhh.jpg"
     },
     {
-      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg",
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\6af45f05-123f-4233-b02c-8e90418dbef4_DSC_8559web-300x200.jpg",
       "SourceId": "BulgarianViews",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
       "BasePath": "_content/BulgarianViews",
-      "RelativePath": "images/46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg",
+      "RelativePath": "images/6af45f05-123f-4233-b02c-8e90418dbef4_DSC_8559web-300x200.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1268,26 +1287,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\46d7cb77-a596-46ab-9648-264f0cff6d3d_dishane-trenirovka-pravilno-2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg",
-      "SourceId": "BulgarianViews",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
-      "BasePath": "_content/BulgarianViews",
-      "RelativePath": "images/7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\7c98b0c8-df2c-40a0-8cc2-2f3319757e56_hiu.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\6af45f05-123f-4233-b02c-8e90418dbef4_DSC_8559web-300x200.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\cdf2d852-7b70-43e7-a72c-bb6e60acb5c7_ehgdhy.jpg",
@@ -1307,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\cdf2d852-7b70-43e7-a72c-bb6e60acb5c7_ehgdhy.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\f1c8d860-6fb3-4e72-bc72-8264f0d69877_esen-listopad-ginko.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/f1c8d860-6fb3-4e72-bc72-8264f0d69877_esen-listopad-ginko.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\f1c8d860-6fb3-4e72-bc72-8264f0d69877_esen-listopad-ginko.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\js\\site.js",
