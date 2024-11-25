@@ -22,6 +22,8 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         public string TagName { get; set; } = null!;
 
         public List<CommentViewModel> Comments { get; set; } = new();
+        public required string PublisherId { get; set; }
+
 
 
     }

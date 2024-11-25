@@ -234,12 +234,38 @@ namespace BulgarianViews.Controllers
                 PhotoURL = post.PhotoURL,
                 UserName = post.User.UserName ?? string.Empty,
                 TagName = post.Tag.Name,
-                Comments = comments
+                Comments = comments,
+                PublisherId = post.UserId.ToString()
+
             };
 
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var post = await _context.LocationPosts.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (post.UserId.ToString() != userId)
+            {
+                return Forbid(); 
+            }
+
+            _context.LocationPosts.Remove(post);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Post deleted successfully!";
+            return RedirectToAction(nameof(Index)); 
+        }
 
 
 

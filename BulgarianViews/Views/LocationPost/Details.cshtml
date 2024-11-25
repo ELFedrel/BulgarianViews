@@ -15,6 +15,15 @@
         <hr />
         <p class="card-text"><strong>Tag:</strong> @Model.TagName</p>
         <p class="card-text"><strong>Posted by:</strong> @Model.UserName</p>
+
+        <!-- Проверка дали потребителят е създател на поста -->
+        @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.PublisherId)
+        {
+            <form asp-action="Delete" asp-controller="LocationPost" method="post" class="d-inline">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">Delete Post</button>
+            </form>
+        }
     </div>
 </div>
 
@@ -52,7 +61,6 @@
                         on @comment.DateCreated.ToString("yyyy-MM-dd HH:mm")
                     </small>
 
-                    
                     @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == comment.UserId.ToString())
                     {
                         <form asp-action="Delete" asp-controller="Comment" method="post" class="d-inline">
@@ -66,6 +74,5 @@
         </ul>
     }
 </section>
-
 
 <a href="@Url.Action("Index", "LocationPost")" class="btn btn-secondary mt-3">Back to List</a>

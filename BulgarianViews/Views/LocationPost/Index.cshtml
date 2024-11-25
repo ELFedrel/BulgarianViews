@@ -31,11 +31,18 @@
                   
                   
 
-                    <!-- Add to Favorites Button -->
+                    
                     <form asp-controller="MyFavorites" asp-action="Add" method="post" class="d-inline">
                         <input type="hidden" name="locationId" value="@post.Id" />
                         <button type="submit" class="btn btn-success btn-sm">Add to My Favorites</button>
                     </form>
+
+                    @if (User.FindFirstValue(System.Security.Claims.ClaimTypes.NameIdentifier) == post.PublisherId)
+                    {
+                        <form asp-action="Delete" method="post" asp-route-id="@post.Id" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    }
                 </div>
             </div>
         </div>
