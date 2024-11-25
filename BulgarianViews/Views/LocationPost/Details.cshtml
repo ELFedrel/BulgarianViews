@@ -13,17 +13,15 @@
         <h5 class="card-title">Description</h5>
         <p class="card-text">@Model.Description</p>
         <hr />
-        <p class="card-text"><strong>Tag:</strong> @Model.TagName</p>
-        <p class="card-text"><strong>Posted by:</strong> @Model.UserName</p>
-
-        <!-- Проверка дали потребителят е създател на поста -->
-        @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.PublisherId)
-        {
-            <form asp-action="Delete" asp-controller="LocationPost" method="post" class="d-inline">
-                <input type="hidden" name="id" value="@Model.Id" />
-                <button type="submit" class="btn btn-danger">Delete Post</button>
-            </form>
-        }
+        <p class="card-text">
+            <strong>Tag:</strong> @Model.TagName
+        </p>
+        <p class="card-text">
+            <strong>Posted by:</strong>
+            <a asp-controller="Profile" asp-action="Details" asp-route-id="@Model.PublisherId">
+                @Model.UserName
+            </a>
+        </p>
     </div>
 </div>
 
@@ -54,7 +52,6 @@
                     <p class="mb-1">@comment.Content</p>
                     <small class="text-muted">
                         Posted by
-                        <!-- Линк към профила на коментатора -->
                         <a asp-controller="Profile" asp-action="Details" asp-route-id="@comment.UserId">
                             <strong>@comment.UserName</strong>
                         </a>

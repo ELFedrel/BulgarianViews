@@ -19,6 +19,7 @@ namespace BulgarianViews.Data
         public DbSet<Tag> Tags { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; } = null!;
         public DbSet<FavoriteViews> FavoriteViews { get; set; } = null!;
+        public DbSet<Rating> Rating { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

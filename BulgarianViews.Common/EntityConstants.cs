@@ -48,5 +48,11 @@ namespace BulgarianViews.Common
             public const int NameMaxLength = 50;
 
         }
+
+        public static class Rating
+        {
+            public const int MinRating = 1;
+            public const int MaxRating = 5;
+        }
     }
 }

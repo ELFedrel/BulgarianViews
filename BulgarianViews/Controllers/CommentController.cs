@@ -65,7 +65,7 @@ namespace BulgarianViews.Controllers
                 })
                 .ToListAsync();
 
-            return PartialView("_Comments", comments);
+            return PartialView("Comments", comments);
         }
 
 
