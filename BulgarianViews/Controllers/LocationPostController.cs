@@ -246,11 +246,11 @@ namespace BulgarianViews.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var post = await _context.LocationPosts.FirstOrDefaultAsync(p => p.Id == id);
+            var post = await _context.LocationPosts
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (post == null)
             {
@@ -258,18 +258,59 @@ namespace BulgarianViews.Controllers
             }
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (post.UserId.ToString() != userId)
             {
-                return Forbid(); 
+                return Forbid();
             }
 
+            var model = new LocationPostDeleteViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Description = post.Description
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(LocationPostDeleteViewModel model)
+        {
+            var post = await _context.LocationPosts
+                .Include(p => p.Comments)  
+                .Include(p => p.Ratings)  
+                .FirstOrDefaultAsync(p => p.Id == model.Id);
+
+            if (post == null)
+            {
+                TempData["Error"] = "Post not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (post.UserId.ToString() != userId)
+            {
+                return Forbid();
+            }
+
+          
+            _context.Comments.RemoveRange(post.Comments);
+
+            
+            _context.Ratings.RemoveRange(post.Ratings);
+
+            
             _context.LocationPosts.Remove(post);
+
+           
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Post deleted successfully!";
-            return RedirectToAction(nameof(Index)); 
+            TempData["Success"] = "Post and its related comments and ratings were deleted successfully!";
+            return RedirectToAction(nameof(Index));
         }
+
+
 
 
 
