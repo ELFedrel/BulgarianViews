@@ -24,6 +24,8 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
         public List<CommentViewModel> Comments { get; set; } = new();
         public required string PublisherId { get; set; }
 
+        public double AverageRating { get; set; } 
+
 
 
     }

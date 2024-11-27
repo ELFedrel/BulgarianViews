@@ -42,6 +42,9 @@ namespace BulgarianViews.Data.Models
 
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<FavoriteViews> Favorites { get; set; } = new List<FavoriteViews>();
-       
+        public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+
+        public double AverageRating { get; set; } 
+
     }
 }

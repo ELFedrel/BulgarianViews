@@ -19,12 +19,17 @@ namespace BulgarianViews.Data
         public DbSet<Tag> Tags { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; } = null!;
         public DbSet<FavoriteViews> FavoriteViews { get; set; } = null!;
-        public DbSet<Rating> Rating { get; set; } = null!;
+        public DbSet<Rating> Ratings { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
+
+            builder.Entity<Rating>()
+             .HasOne(r => r.LocationPost)
+             .WithMany(lp => lp.Ratings)
+             .HasForeignKey(r => r.LocationPostId)
+             .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Tag>()
            .HasData(

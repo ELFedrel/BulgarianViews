@@ -4,6 +4,7 @@ using BulgarianViews.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulgarianViews.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241125205601_Rating")]
+    partial class Rating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,22 +243,22 @@ namespace BulgarianViews.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("22d6fb61-21f9-472c-9706-5abfb146a5a6"),
+                            Id = new Guid("1e11d6c6-e915-473e-b771-2717106c2f12"),
                             Name = "Sea"
                         },
                         new
                         {
-                            Id = new Guid("e95abc3b-c68b-4fd8-a221-de2a62802d1e"),
+                            Id = new Guid("d492b936-eb19-47eb-a8e5-d4b01247fe72"),
                             Name = "Mountain"
                         },
                         new
                         {
-                            Id = new Guid("04c672c9-bfaf-4f8d-9e8b-a2ff3b451d54"),
+                            Id = new Guid("8699da16-c06e-4895-9b82-bb85c7660464"),
                             Name = "City"
                         },
                         new
                         {
-                            Id = new Guid("17856507-5a10-4ee6-905a-945ea5088587"),
+                            Id = new Guid("0559d9bb-af50-4013-9ec4-1e4ef11adecf"),
                             Name = "Village"
                         });
                 });

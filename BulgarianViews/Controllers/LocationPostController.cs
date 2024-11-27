@@ -220,11 +220,14 @@ namespace BulgarianViews.Controllers
                 {
                     Id = c.Id,
                     Content = c.Content,
-                    UserName = c.User.UserName ?? "Unknown",
-                    UserId = c.UserId, // Включваме UserId
+                    UserName = c.User.UserName ?? String.Empty,
+                    UserId = c.UserId, 
                     DateCreated = c.DateCreated
                 })
                 .ToListAsync();
+
+            var ratings = await _context.Ratings.Where(r => r.LocationPostId == id).ToListAsync();
+            double averageRating = ratings.Any() ? ratings.Average(r => r.Value) : 0;
 
             var model = new LocationPostDetailsViewModel
             {
@@ -235,7 +238,8 @@ namespace BulgarianViews.Controllers
                 UserName = post.User.UserName ?? string.Empty,
                 TagName = post.Tag.Name,
                 Comments = comments,
-                PublisherId = post.UserId.ToString()
+                PublisherId = post.UserId.ToString(),
+                AverageRating = averageRating
 
             };
 
