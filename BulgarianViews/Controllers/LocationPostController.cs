@@ -33,6 +33,7 @@ namespace BulgarianViews.Controllers
                    PhotoURL = lp.PhotoURL,
                    UserName = lp.User.UserName ?? String.Empty,
                    PublisherId = lp.UserId.ToString(),
+                   AverageRating = lp.Ratings.Any() ? lp.Ratings.Average(r => r.Value) : 0
                })
                .ToListAsync();
 
@@ -62,10 +63,10 @@ namespace BulgarianViews.Controllers
             string photoUrl = null;
             if (model.PhotoURL != null && model.PhotoURL.Length > 0)
             {
-                // Define the folder for uploads
+                
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
 
-                // Ensure the folder exists
+                
                 if (!Directory.Exists(uploadsFolder))
                 {
                     Directory.CreateDirectory(uploadsFolder);
@@ -80,7 +81,7 @@ namespace BulgarianViews.Controllers
                     await model.PhotoURL.CopyToAsync(fileStream);
                 }
 
-                // Set the photo URL to be saved in the database
+                
                 photoUrl = $"/images/{uniqueFileName}";
             }
 

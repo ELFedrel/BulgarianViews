@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BulgarianViews.Common\BulgarianViews.Common.csproj" />
+    <ProjectReference Include="..\BulgarianViews.Data.Models\BulgarianViews.Data.Models.csproj" />
     <ProjectReference Include="..\BulgarianViews.Data\BulgarianViews.Data.csproj" />
     <ProjectReference Include="..\BulgarianViews.Web.ViewModels\BulgarianViews.Web.ViewModels.csproj" />
   </ItemGroup>

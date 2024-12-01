@@ -53,7 +53,7 @@ namespace BulgarianViews.Controllers
                 _context.Ratings.Add(newRating);
             }
 
-            // Обновяване на средния рейтинг на поста
+            
             var post = await _context.LocationPosts
                 .Include(lp => lp.Ratings)
                 .FirstOrDefaultAsync(lp => lp.Id == postId);

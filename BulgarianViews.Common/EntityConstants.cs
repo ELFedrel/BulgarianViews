@@ -41,7 +41,7 @@ namespace BulgarianViews.Common
             public const int ContentMaxLength = 300;
         }
 
-        // Tag Entity Constants
+       
         public static class Tag
         {
             public const int NameMinLength = 3;

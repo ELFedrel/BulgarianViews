@@ -9,13 +9,14 @@ namespace BulgarianViews.Web.ViewModels.LocationPost
     public class LocationPostIndexViewModel
     {
         public Guid Id { get; set; }
-        public required string Title { get; set; }
-        public required string Description { get; set; }
-        public required string PhotoURL { get; set; }
+        public  string Title { get; set; }
+        public  string Description { get; set; }
+        public  string PhotoURL { get; set; }
        
-        public required string UserName { get; set; }
-        public required string PublisherId { get; set; }
-      
+        public  string UserName { get; set; }
+        public  string PublisherId { get; set; }
+        public double AverageRating { get; set; } 
+
 
 
 

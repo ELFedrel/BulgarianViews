@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model BulgarianViews.Web.ViewModels.Home.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="text-center my-4">Welcome to Bulgarian Views</h1>
+
+<div class="container">
+    <!-- About Section -->
+    <section class="mb-5">
+        <h2>About Bulgarian Views</h2>
+        <p>
+            Discover the most beautiful places in Bulgaria! Create your own posts, share your experiences, and explore hidden gems rated by our vibrant community.
+        </p>
+    </section>
+
+    <!-- Top-Rated Posts Section -->
+    <section class="mb-5">
+        <h2>Top 3 Rated Posts</h2>
+        <div class="row">
+            @if (Model.TopRatedPosts != null && Model.TopRatedPosts.Any())
+            {
+                foreach (var post in Model.TopRatedPosts)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">@post.Title</h5>
+                                <p class="card-text text-truncate">@post.Description</p>
+                                <p><strong>Rating:</strong> @post.AverageRating.ToString("0.0") / 5</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No top-rated posts available at the moment.</p>
+            }
+        </div>
+    </section>
+
+    <!-- User Stats Section -->
+    <section class="mb-5">
+        <h2>Community Stats</h2>
+        <p>
+            <strong>Total Registered Users:</strong> @Model.TotalUsers
+        </p>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="text-center">
+        <h2>Join the Community!</h2>
+        <p>Create your own account to start sharing and exploring the best views in Bulgaria!</p>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Sign Up Now</a>
+    </section>
 </div>

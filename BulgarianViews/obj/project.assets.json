@@ -10098,6 +10098,7 @@
     "net8.0": [
       "BulgarianViews.Common >= 1.0.0",
       "BulgarianViews.Data >= 1.0.0",
+      "BulgarianViews.Data.Models >= 1.0.0",
       "BulgarianViews.Web.ViewModels >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.8",
@@ -10135,6 +10136,9 @@
           "projectReferences": {
             "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj": {
               "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj"
+            },
+            "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj"
             },
             "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj": {
               "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj"

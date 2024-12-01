@@ -134,5 +134,30 @@ namespace BulgarianViews.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> MyPosts()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var posts = await _context.LocationPosts
+                .Where(lp => lp.UserId == Guid.Parse(userId))
+                .Select(lp => new MyPostViewModel
+                {
+                    Id = lp.Id,
+                    Title = lp.Title,
+                    Description = lp.Description,
+                    PhotoURL = lp.PhotoURL,
+                    AverageRating = lp.AverageRating
+                })
+                .ToListAsync();
+
+            return View(posts);
+        }
+
     }
 }
