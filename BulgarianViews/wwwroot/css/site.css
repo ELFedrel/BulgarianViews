@@ -292,3 +292,188 @@ footer {
     .rating input {
         display: none; /* Скриване на радиобутона */
     }
+
+/* Ефекти за началния екран */
+.hero {
+    background: linear-gradient(45deg, #003d80, #0056b3), url('/images/hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero .btn {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+    }
+
+/* Секция с факти */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    background: #f1f1f1;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #003d80;
+    font-weight: bold;
+}
+
+    .stat span {
+        display: block;
+        font-size: 3rem;
+        color: #ffcc00;
+    }
+
+/* Карти за локации */
+.card {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+    .card img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover img {
+        transform: scale(1.1);
+    }
+
+    .card .card-body {
+        padding: 1rem 1.5rem;
+    }
+
+    .card .btn {
+        margin-top: 0.5rem;
+    }
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #003d80, #0056b3);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+    footer a {
+        color: #ffcc00;
+        font-weight: bold;
+        text-decoration: underline;
+        transition: color 0.3s ease-in-out;
+    }
+
+        footer a:hover {
+            color: white;
+            text-decoration: none;
+        }
+/* Стилове за Community Stats */
+.community-stats {
+    background: linear-gradient(135deg, #003d80, #0056b3);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+    .community-stats h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    flex: 1 1 calc(33.333% - 2rem); /* Разделя елементите на три колони */
+    max-width: 300px;
+    text-align: center;
+    background: white;
+    color: #003d80;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .stat-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-item h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffcc00;
+    margin: 0;
+}
+.card-text.text-warning {
+    color: #ffcc00;
+    font-weight: bold;
+}
+/* Privacy Policy Styling */
+.container {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+}
+
+h1, h2 {
+    color: #003d80;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+ul {
+    margin-left: 1.5rem;
+}
+
+    ul li {
+        margin-bottom: 0.5rem;
+    }
+
+a {
+    color: #003d80;
+    text-decoration: underline;
+}
+
+    a:hover {
+        color: #0056b3;
+    }

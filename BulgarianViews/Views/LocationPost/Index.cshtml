@@ -18,14 +18,12 @@
                 <div class="card-body">
                     <h5 class="card-title text-truncate">@post.Title</h5>
                     <p class="card-text text-muted">@post.Description.Substring(0, Math.Min(post.Description.Length, 100))...</p>
+                    <p class="card-text text-warning">
+                        <strong>Rating:</strong> @post.AverageRating.ToString("0.0") / 5
+                    </p>
                 </div>
                 <div class="card-footer text-center">
-                    <!-- View Details Button -->
                     <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-info btn-sm">View Details</a>
-
-                    
-
-
 
                     <form asp-controller="MyFavorites" asp-action="Add" method="post" class="d-inline">
                         <input type="hidden" name="locationId" value="@post.Id" />

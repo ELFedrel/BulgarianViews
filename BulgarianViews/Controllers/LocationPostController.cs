@@ -49,7 +49,7 @@ namespace BulgarianViews.Controllers
             return View(model);
         }
 
-        // Create Action (POST)
+        
         [HttpPost]
         public async Task<IActionResult> Create(LocationPostCreateViewModel model)
         {

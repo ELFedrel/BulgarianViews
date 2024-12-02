@@ -1,55 +1,117 @@
 ﻿@model BulgarianViews.Web.ViewModels.Home.HomeViewModel
 
-<h1 class="text-center my-4">Welcome to Bulgarian Views</h1>
+<h1 class="text-center my-4">Explore Bulgarian Views</h1>
 
 <div class="container">
     <!-- About Section -->
-    <section class="mb-5">
-        <h2>About Bulgarian Views</h2>
+    <section class="mb-5 text-center">
+        <h2>About Us</h2>
         <p>
-            Discover the most beautiful places in Bulgaria! Create your own posts, share your experiences, and explore hidden gems rated by our vibrant community.
+            Bulgarian Views is your ultimate guide to exploring the breathtaking beauty of Bulgaria. Our platform is dedicated to showcasing the most stunning locations, from picturesque mountain ranges to hidden seaside gems. Join our vibrant community of travelers, adventurers, and locals who share their experiences and rate their favorite destinations. Whether you're seeking inspiration for your next trip or looking to share your journey, Bulgarian Views is the perfect place for you.
+
+            Discover top-rated posts and uncover lesser-known treasures recommended by fellow enthusiasts. Our interactive platform allows users to share personal stories, upload mesmerizing photos, and provide valuable insights about each location. Create your own account to become part of our community and start contributing to our growing collection of Bulgarian wonders.
+
+            With features like personalized profiles, community stats, and a dynamic rating system, we ensure a rich and engaging user experience. You can connect with like-minded individuals, follow your favorite explorers, and even build your own list of must-visit destinations. Bulgarian Views isn’t just a guide; it’s a place where memories are made, adventures are shared, and Bulgaria’s natural beauty is celebrated. Join us today and let’s explore Bulgaria together!
         </p>
     </section>
 
     <!-- Top-Rated Posts Section -->
     <section class="mb-5">
-        <h2>Top 3 Rated Posts</h2>
+        <h2>Top-Rated Locations</h2>
         <div class="row">
-            @if (Model.TopRatedPosts != null && Model.TopRatedPosts.Any())
+            @foreach (var post in Model.TopRatedPosts)
             {
-                foreach (var post in Model.TopRatedPosts)
-                {
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100 shadow-sm">
-                            <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title">@post.Title</h5>
-                                <p class="card-text text-truncate">@post.Description</p>
-                                <p><strong>Rating:</strong> @post.AverageRating.ToString("0.0") / 5</p>
-                            </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <p class="card-text">@post.Description</p>
+                            <p><strong>Rating:</strong> @post.AverageRating.ToString("0.0") / 5</p>
                         </div>
                     </div>
-                }
-            }
-            else
-            {
-                <p>No top-rated posts available at the moment.</p>
+                </div>
             }
         </div>
     </section>
 
-    <!-- User Stats Section -->
+    <!-- Recent Posts Section -->
     <section class="mb-5">
-        <h2>Community Stats</h2>
-        <p>
-            <strong>Total Registered Users:</strong> @Model.TotalUsers
-        </p>
+        <h2>Recent Locations</h2>
+        <div class="row">
+            @foreach (var post in Model.RecentPosts)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <p class="card-text">@post.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </section>
 
+    <!-- Most Commented Posts Section -->
+    <section class="mb-5">
+        <h2>Most Commented Locations</h2>
+        <div class="row">
+            @foreach (var post in Model.MostCommentedPosts)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <img src="@post.PhotoURL" class="card-img-top" alt="@post.Title" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <p class="card-text">@post.Description</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Random Location Section -->
+    <section class="mb-5 text-center">
+        <h2>Featured Location</h2>
+        @if (Model.RandomPost != null)
+        {
+            <div class="card mx-auto" style="max-width: 500px;">
+                <img src="@Model.RandomPost.PhotoURL" class="card-img-top" alt="@Model.RandomPost.Title" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.RandomPost.Title</h5>
+                    <p class="card-text">@Model.RandomPost.Description</p>
+                </div>
+            </div>
+        }
+    </section>
+
+    <section class="community-stats my-5">
+        <h2 class="text-center">Community Stats</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>Total Users</h3>
+                <p class="stat-value">@Model.TotalUsers</p>
+            </div>
+            <div class="stat-item">
+                <h3>Total Posts</h3>
+                <p class="stat-value">@Model.TotalPosts</p>
+            </div>
+            <div class="stat-item">
+                <h3>Total Comments</h3>
+                <p class="stat-value">@Model.TotalComments</p>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Call to Action Section -->
-    <section class="text-center">
-        <h2>Join the Community!</h2>
-        <p>Create your own account to start sharing and exploring the best views in Bulgaria!</p>
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary">Sign Up Now</a>
+    <section class="text-center mt-5">
+        <h2>Join the Community</h2>
+        <p>Create your account today and start sharing your favorite places!</p>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg">Sign Up</a>
     </section>
 </div>
