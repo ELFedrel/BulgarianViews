@@ -1,5 +1,7 @@
 using BulgarianViews.Data;
 using BulgarianViews.Data.Models;
+using BulgarianViews.Data.Repositories;
+using BulgarianViews.Data.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +33,15 @@ namespace BulgarianViews
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IRepository<Tag, Guid>, Repository<Tag, Guid>>();
+            builder.Services.AddScoped<IRepository<Rating, Guid>, Repository<Rating, Guid>>();
+            builder.Services.AddScoped<IRepository<LocationPost, Guid>, Repository<LocationPost, Guid>>();
+           // builder.Services.AddScoped<IRepository<Location, Guid>, Repository<Location, Guid>>();
+            builder.Services.AddScoped<IRepository<Comment, Guid>, Repository<Comment, Guid>>();
+            builder.Services.AddScoped<IRepository<FavoriteViews, object>, Repository<FavoriteViews, object>>();
+            builder.Services.AddScoped<IRepository<ApplicationUser, Guid>, Repository<ApplicationUser, Guid>>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
