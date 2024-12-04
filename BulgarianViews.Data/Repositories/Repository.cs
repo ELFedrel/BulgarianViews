@@ -140,5 +140,10 @@ namespace BulgarianViews.Data.Repositories
         {
             return await _dbSet.FindAsync(id) != null;
         }
+
+        public async Task<int> CountAsync()
+        {
+            return await _dbSet.CountAsync();
+        }
     }
 }

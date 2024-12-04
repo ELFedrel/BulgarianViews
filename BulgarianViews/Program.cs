@@ -47,6 +47,7 @@ namespace BulgarianViews
 
 
             builder.Services.AddScoped<ICommentService, CommentService>();
+            builder.Services.AddScoped<IHomeService, HomeService>();
 
             var app = builder.Build();
 

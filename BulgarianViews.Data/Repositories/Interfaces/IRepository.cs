@@ -31,5 +31,6 @@ namespace BulgarianViews.Data.Repositories.Interfaces
 
         bool Exists(TId id);
         Task<bool> ExistsAsync(TId id);
+        Task<int> CountAsync();
     }
 }
