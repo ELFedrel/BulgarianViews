@@ -1,5 +1,6 @@
 ﻿using BulgarianViews.Data;
 using BulgarianViews.Data.Models;
+using BulgarianViews.Services.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -8,13 +9,12 @@ namespace BulgarianViews.Controllers
 {
     public class RatingController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRatingService _ratingService;
 
-        public RatingController(ApplicationDbContext context)
+        public RatingController(IRatingService ratingService)
         {
-            _context = context;
+            _ratingService = ratingService;
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -26,47 +26,22 @@ namespace BulgarianViews.Controllers
                 return RedirectToAction("Details", "LocationPost", new { id = postId });
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim))
                 return Unauthorized();
-            }
 
-           
-            var existingRating = await _context.Ratings
-                .FirstOrDefaultAsync(r => r.UserId == Guid.Parse(userId) && r.LocationPostId == postId);
+            var userId = Guid.Parse(userIdClaim);
 
-            if (existingRating != null)
+            try
             {
-                existingRating.Value = rating;
+                await _ratingService.RateAsync(postId, userId, rating);
+                TempData["Success"] = "Thank you for rating!";
             }
-            else
+            catch (Exception ex)
             {
-                var newRating = new Rating
-                {
-                    Id = Guid.NewGuid(),
-                    Value = rating,
-                    UserId = Guid.Parse(userId),
-                    LocationPostId = postId
-                };
-
-                _context.Ratings.Add(newRating);
+                TempData["Error"] = $"An error occurred: {ex.Message}";
             }
 
-            
-            var post = await _context.LocationPosts
-                .Include(lp => lp.Ratings)
-                .FirstOrDefaultAsync(lp => lp.Id == postId);
-
-            if (post != null)
-            {
-                post.AverageRating = post.Ratings.Any() ? post.Ratings.Average(r => r.Value) : 0;
-                _context.LocationPosts.Update(post);
-            }
-
-            await _context.SaveChangesAsync();
-
-            TempData["Success"] = "Thank you for rating!";
             return RedirectToAction("Details", "LocationPost", new { id = postId });
         }
     }

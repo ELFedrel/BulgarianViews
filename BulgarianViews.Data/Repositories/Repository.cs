@@ -1,4 +1,5 @@
-﻿using BulgarianViews.Data.Repositories.Interfaces;
+﻿using BulgarianViews.Data.Models;
+using BulgarianViews.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -144,6 +145,18 @@ namespace BulgarianViews.Data.Repositories
         public async Task<int> CountAsync()
         {
             return await _dbSet.CountAsync();
+        }
+
+        public async Task<TType> GetByIdIncludingAsync(TId id, params Expression<Func<TType, object>>[] includeProperties)
+        {
+            IQueryable<TType> query = _dbSet;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.FirstOrDefaultAsync(entity => EF.Property<TId>(entity, "Id").Equals(id));
         }
     }
 }

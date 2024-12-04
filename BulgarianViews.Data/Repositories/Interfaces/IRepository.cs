@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulgarianViews.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -32,5 +33,6 @@ namespace BulgarianViews.Data.Repositories.Interfaces
         bool Exists(TId id);
         Task<bool> ExistsAsync(TId id);
         Task<int> CountAsync();
+        Task<TType> GetByIdIncludingAsync(TId id, params Expression<Func<TType, object>>[] includeProperties);
     }
 }
