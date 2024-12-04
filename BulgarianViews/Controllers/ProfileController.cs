@@ -1,4 +1,5 @@
 ﻿using BulgarianViews.Data;
+using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Profile;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,60 +12,28 @@ namespace BulgarianViews.Controllers
     public class ProfileController : Controller
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly IProfileService _profileService;
 
-        public ProfileController(ApplicationDbContext context)
+        public ProfileController(IProfileService profileService)
         {
-            _context = context;
+            _profileService = profileService;
         }
 
-        // GET: Profile/Index
         public async Task<IActionResult> Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == Guid.Parse(userId));
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var model = new ProfileViewModel
-            {
-                UserName = user.UserName,
-                ProfilePictureURL = user.ProfilePictureURL,
-                Bio = user.Bio
-            };
-
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var model = await _profileService.GetProfileAsync(userId);
             return View(model);
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == Guid.Parse(userId));
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var model = new ProfileEditViewModel
-            {
-                UserName = user.UserName,
-                Bio = user.Bio,
-                ProfilePictureURL = user.ProfilePictureURL 
-            };
-
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var model = await _profileService.GetProfileForEditAsync(userId);
             return View(model);
         }
 
-       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProfileEditViewModel model)
@@ -74,40 +43,8 @@ namespace BulgarianViews.Controllers
                 return View(model);
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == Guid.Parse(userId));
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            user.UserName = model.UserName;
-           
-            user.Bio = model.Bio;
-
-            
-            if (model.ProfilePicture != null)
-            {
-               
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
-                var uniqueFileName = $"{Guid.NewGuid()}_{model.ProfilePicture.FileName}";
-                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await model.ProfilePicture.CopyToAsync(fileStream);
-                }
-
-                
-                user.ProfilePictureURL = $"/images/{uniqueFileName}";
-            }
-
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _profileService.UpdateProfileAsync(userId, model);
 
             TempData["Success"] = "Profile updated successfully!";
             return RedirectToAction(nameof(Index));
@@ -116,46 +53,15 @@ namespace BulgarianViews.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var model = new ProfileViewModel
-            {
-                UserName = user.UserName,
-                ProfilePictureURL = user.ProfilePictureURL ?? "/images/default-profile.png",
-                Bio = user.Bio
-            };
-
+            var model = await _profileService.GetUserDetailsAsync(id);
             return View(model);
         }
 
         [HttpGet]
         public async Task<IActionResult> MyPosts()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-
-            var posts = await _context.LocationPosts
-                .Where(lp => lp.UserId == Guid.Parse(userId))
-                .Select(lp => new MyPostViewModel
-                {
-                    Id = lp.Id,
-                    Title = lp.Title,
-                    Description = lp.Description,
-                    PhotoURL = lp.PhotoURL,
-                    AverageRating = lp.AverageRating
-                })
-                .ToListAsync();
-
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var posts = await _profileService.GetUserPostsAsync(userId);
             return View(posts);
         }
 
