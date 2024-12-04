@@ -1,5 +1,6 @@
 ﻿using BulgarianViews.Data;
 using BulgarianViews.Data.Models;
+using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Comment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +10,13 @@ namespace BulgarianViews.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ICommentService _commentService;
 
-        public CommentController(ApplicationDbContext context)
+        public CommentController(ICommentService commentService)
         {
-            _context = context;
+            _commentService = commentService;
         }
 
-        // POST: Add Comment
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(CreateCommentViewModel model)
@@ -33,63 +33,39 @@ namespace BulgarianViews.Controllers
                 return Unauthorized();
             }
 
-           var comment = new Comment
-           {
-               Id = Guid.NewGuid(),
-               Content = model.Content,
-               UserId = Guid.Parse(userId),
-               LocationPostId = model.LocationPostId,
-               DateCreated = DateTime.UtcNow
-           };
-
-            _context.Comments.Add(comment);
-            await _context.SaveChangesAsync();
+            await _commentService.AddCommentAsync(model, Guid.Parse(userId));
 
             TempData["Success"] = "Comment added successfully!";
             return RedirectToAction("Details", "LocationPost", new { id = model.LocationPostId });
         }
 
-        
         [HttpGet]
         public async Task<IActionResult> ViewComments(Guid postId)
         {
-            var comments = await _context.Comments
-                .Where(c => c.LocationPostId == postId)
-                .Include(c => c.User)
-                .Select(c => new CommentViewModel
-                {
-                    Id = c.Id,
-                    Content = c.Content,
-                    UserName = c.User.UserName,
-                    DateCreated = c.DateCreated
-                })
-                .ToListAsync();
-
+            var comments = await _commentService.GetCommentsByPostIdAsync(postId);
             return PartialView("Comments", comments);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id, Guid postId)
         {
-            var comment = await _context.Comments.FindAsync(id);
-            if (comment == null)
-            {
-                TempData["Error"] = "Comment not found.";
-                return RedirectToAction("Details", "LocationPost", new { id = postId });
-            }
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (comment.UserId != Guid.Parse(userId))
+            if (userId == null)
             {
-                return Forbid();
+                return Unauthorized();
             }
 
-            _context.Comments.Remove(comment);
-            await _context.SaveChangesAsync();
+            var success = await _commentService.DeleteCommentAsync(id, Guid.Parse(userId));
+            if (!success)
+            {
+                TempData["Error"] = "Comment not found or you do not have permission to delete it.";
+            }
+            else
+            {
+                TempData["Success"] = "Comment deleted successfully!";
+            }
 
-            TempData["Success"] = "Comment deleted successfully!";
             return RedirectToAction("Details", "LocationPost", new { id = postId });
         }
     }

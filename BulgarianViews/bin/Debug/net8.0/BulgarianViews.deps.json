@@ -11,6 +11,7 @@
           "BulgarianViews.Common": "1.0.0",
           "BulgarianViews.Data": "1.0.0",
           "BulgarianViews.Data.Models": "1.0.0",
+          "BulgarianViews.Services.Data": "1.0.0",
           "BulgarianViews.Web.ViewModels": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.8",
@@ -1860,6 +1861,16 @@
           "BulgarianViews.Data.Models.dll": {}
         }
       },
+      "BulgarianViews.Services.Data/1.0.0": {
+        "dependencies": {
+          "BulgarianViews.Data": "1.0.0",
+          "BulgarianViews.Data.Models": "1.0.0",
+          "BulgarianViews.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "BulgarianViews.Services.Data.dll": {}
+        }
+      },
       "BulgarianViews.Web.ViewModels/1.0.0": {
         "dependencies": {
           "BulgarianViews.Common": "1.0.0",
@@ -3205,6 +3216,11 @@
       "sha512": ""
     },
     "BulgarianViews.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BulgarianViews.Services.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

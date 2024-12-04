@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews", "BulgarianViews\BulgarianViews.csproj", "{4369D020-0DE4-4F4C-806B-75EA5A622F68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews", "BulgarianViews\BulgarianViews.csproj", "{4369D020-0DE4-4F4C-806B-75EA5A622F68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{662DA25F-5E6F-41F0-B207-2BAE0447B586}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A90CEF0A-552B-432A-8039-F26BB4CE58C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Web.ViewModels", "BulgarianViews.Web.ViewModels\BulgarianViews.Web.ViewModels.csproj", "{85E889E3-5A1F-4B64-BDDE-83BBFC4290BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Web.ViewModels", "BulgarianViews.Web.ViewModels\BulgarianViews.Web.ViewModels.csproj", "{85E889E3-5A1F-4B64-BDDE-83BBFC4290BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Data", "BulgarianViews.Data\BulgarianViews.Data.csproj", "{22D42539-2E09-48D0-B9E7-338334FAA656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Data", "BulgarianViews.Data\BulgarianViews.Data.csproj", "{22D42539-2E09-48D0-B9E7-338334FAA656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Data.Models", "BulgarianViews.Data.Models\BulgarianViews.Data.Models.csproj", "{961CAC03-597F-4565-ADE4-3742A3196347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Data.Models", "BulgarianViews.Data.Models\BulgarianViews.Data.Models.csproj", "{961CAC03-597F-4565-ADE4-3742A3196347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Common", "BulgarianViews.Common\BulgarianViews.Common.csproj", "{596C0F4B-2580-4CAE-A99C-3DEB7ED80506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Common", "BulgarianViews.Common\BulgarianViews.Common.csproj", "{596C0F4B-2580-4CAE-A99C-3DEB7ED80506}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2BCF6C40-1790-45C9-9739-EEFBCF4414FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Services.Data", "BulgarianViews.Services.Data\BulgarianViews.Services.Data.csproj", "{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{596C0F4B-2580-4CAE-A99C-3DEB7ED80506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596C0F4B-2580-4CAE-A99C-3DEB7ED80506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596C0F4B-2580-4CAE-A99C-3DEB7ED80506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{85E889E3-5A1F-4B64-BDDE-83BBFC4290BF} = {662DA25F-5E6F-41F0-B207-2BAE0447B586}
 		{22D42539-2E09-48D0-B9E7-338334FAA656} = {A90CEF0A-552B-432A-8039-F26BB4CE58C2}
 		{961CAC03-597F-4565-ADE4-3742A3196347} = {A90CEF0A-552B-432A-8039-F26BB4CE58C2}
+		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0} = {2BCF6C40-1790-45C9-9739-EEFBCF4414FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {755C8209-E7CC-4D11-B923-85277AB2A81F}

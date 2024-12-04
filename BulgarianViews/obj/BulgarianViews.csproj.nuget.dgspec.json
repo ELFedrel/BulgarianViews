@@ -203,6 +203,71 @@
         }
       }
     },
+    "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj",
+        "projectName": "BulgarianViews.Services.Data",
+        "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj",
+        "packagesPath": "C:\\Users\\Ivo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ivo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj"
+              },
+              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj": {
+                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj"
+              },
+              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -303,6 +368,9 @@
               },
               "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj": {
                 "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj"
+              },
+              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj": {
+                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj"
               },
               "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj": {
                 "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj"

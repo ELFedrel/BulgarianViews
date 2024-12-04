@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BulgarianViews.Data.Models\BulgarianViews.Data.Models.csproj" />
+    <ProjectReference Include="..\BulgarianViews.Data\BulgarianViews.Data.csproj" />
+    <ProjectReference Include="..\BulgarianViews.Web.ViewModels\BulgarianViews.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

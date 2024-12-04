@@ -2,6 +2,8 @@ using BulgarianViews.Data;
 using BulgarianViews.Data.Models;
 using BulgarianViews.Data.Repositories;
 using BulgarianViews.Data.Repositories.Interfaces;
+using BulgarianViews.Services.Data.Interfaces;
+using BulgarianViews.Services.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,6 +43,10 @@ namespace BulgarianViews
             builder.Services.AddScoped<IRepository<Comment, Guid>, Repository<Comment, Guid>>();
             builder.Services.AddScoped<IRepository<FavoriteViews, object>, Repository<FavoriteViews, object>>();
             builder.Services.AddScoped<IRepository<ApplicationUser, Guid>, Repository<ApplicationUser, Guid>>();
+
+
+
+            builder.Services.AddScoped<ICommentService, CommentService>();
 
             var app = builder.Build();
 
