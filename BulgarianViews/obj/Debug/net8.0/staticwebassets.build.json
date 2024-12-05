@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WsV9s7MfQ3EyEOYBAp9Q009Xmyjz23p2KDh8jRcP+CE=",
+  "Hash": "LxvLly0aUUizBAxZgVTCPKwrlVgLfktPvc+KxngW5u0=",
   "Source": "BulgarianViews",
   "BasePath": "_content/BulgarianViews",
   "Mode": "Default",
@@ -1442,6 +1442,25 @@
       "OriginalItemSpec": "wwwroot\\images\\6af45f05-123f-4233-b02c-8e90418dbef4_DSC_8559web-300x200.jpg"
     },
     {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\78738495-19e2-4c70-ab76-8f5793aad336_hjkl.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/78738495-19e2-4c70-ab76-8f5793aad336_hjkl.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\78738495-19e2-4c70-ab76-8f5793aad336_hjkl.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\84ffc66b-76c6-417a-a217-947e3b1abb6e_hiu.jpg",
       "SourceId": "BulgarianViews",
       "SourceType": "Discovered",
@@ -1573,6 +1592,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\d0ed9059-01f9-4b90-8746-8a415d89e30d_Portrait_of_John_Langdon_Down_(c_1870)_by_Sydney_Hodges.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\e61e4834-4b05-49ed-a7d5-812cb8bc5ddb_1611814761_31image2.jpg",
+      "SourceId": "BulgarianViews",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\",
+      "BasePath": "_content/BulgarianViews",
+      "RelativePath": "images/e61e4834-4b05-49ed-a7d5-812cb8bc5ddb_1611814761_31image2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\e61e4834-4b05-49ed-a7d5-812cb8bc5ddb_1611814761_31image2.jpg"
     },
     {
       "Identity": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\wwwroot\\images\\e90bcc37-d357-4175-a626-5c0f32b379ae_b5_9lsuieaaogfd.webp",

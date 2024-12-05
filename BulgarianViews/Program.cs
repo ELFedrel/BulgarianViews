@@ -50,7 +50,8 @@ namespace BulgarianViews
             builder.Services.AddScoped<IHomeService, HomeService>();
             builder.Services.AddScoped<IRatingService, RatingService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
-
+            builder.Services.AddScoped<ILocationPostService, LocationPostService>();
+          
 
             var app = builder.Build();
 

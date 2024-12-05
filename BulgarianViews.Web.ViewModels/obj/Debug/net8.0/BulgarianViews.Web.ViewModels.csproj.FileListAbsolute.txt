@@ -27,9 +27,9 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\ne
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.AssemblyInfoInputs.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.AssemblyInfo.cs
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.sourcelink.json
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.csproj.CopyComplete
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\refint\BulgarianViews.Web.ViewModels.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\ref\BulgarianViews.Web.ViewModels.dll
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.sourcelink.json

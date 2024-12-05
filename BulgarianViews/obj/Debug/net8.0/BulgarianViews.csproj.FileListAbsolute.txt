@@ -284,11 +284,13 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\runtimes\w
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Common.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Data.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Data.Models.dll
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Services.Data.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Web.ViewModels.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Common.pdb
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Data.pdb
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Web.ViewModels.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Data.Models.pdb
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Data.pdb
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Services.Data.pdb
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Web.ViewModels.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.csproj.AssemblyReference.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.AssemblyInfoInputs.cache
@@ -298,6 +300,7 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianV
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.RazorAssemblyInfo.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.RazorAssemblyInfo.cs
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.sourcelink.json
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\staticwebassets\msbuild.BulgarianViews.Microsoft.AspNetCore.StaticWebAssets.props
@@ -314,6 +317,3 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\refint\Bul
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.genruntimeconfig.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\ref\BulgarianViews.dll
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\obj\Debug\net8.0\BulgarianViews.sourcelink.json
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Services.Data.dll
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews\bin\Debug\net8.0\BulgarianViews.Services.Data.pdb

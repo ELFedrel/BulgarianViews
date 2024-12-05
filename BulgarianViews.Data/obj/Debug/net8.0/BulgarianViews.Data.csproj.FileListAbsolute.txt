@@ -30,10 +30,10 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\Bulga
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.AssemblyInfoInputs.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.AssemblyInfo.cs
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.csproj.CoreCompileInputs.cache
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.sourcelink.json
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.csproj.CopyComplete
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\refint\BulgarianViews.Data.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.genruntimeconfig.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\ref\BulgarianViews.Data.dll
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Data\obj\Debug\net8.0\BulgarianViews.Data.sourcelink.json

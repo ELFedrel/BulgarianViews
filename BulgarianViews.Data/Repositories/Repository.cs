@@ -158,5 +158,11 @@ namespace BulgarianViews.Data.Repositories
 
             return await query.FirstOrDefaultAsync(entity => EF.Property<TId>(entity, "Id").Equals(id));
         }
+
+        public void RemoveRange(IEnumerable<TType> entities)
+        {
+            _dbSet.RemoveRange(entities);
+            _context.SaveChanges();
+        }
     }
 }
