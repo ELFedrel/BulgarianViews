@@ -5,102 +5,56 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using BulgarianViews.Services.Data.Interfaces;
 
 namespace BulgarianViews.Controllers
 {
     [Authorize]
     public class MyFavoritesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IMyFavoritesService _myFavoritesService;
 
-        public MyFavoritesController(ApplicationDbContext context)
+        public MyFavoritesController(IMyFavoritesService myFavoritesService)
         {
-            _context = context;
+            _myFavoritesService = myFavoritesService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-
-            var favorites = await _context.FavoriteViews
-                .Where(f => f.UserId == Guid.Parse(userId))
-                .Include(f => f.Location)
-                .Select(f => new FavoritesViewModel
-                {
-                    Id = f.Location.Id,
-                    Title = f.Location.Title,
-                    Description = f.Location.Description,
-                    PhotoURL = f.Location.PhotoURL
-
-                })
-                .ToListAsync();
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var favorites = await _myFavoritesService.GetUserFavoritesAsync(userId);
 
             return View(favorites);
         }
-        // POST: Add to Favorites
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(Guid locationId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-
-            var existingFavorite = await _context.FavoriteViews
-                .FirstOrDefaultAsync(f => f.UserId == Guid.Parse(userId) && f.LocationId == locationId);
-
-            if (existingFavorite != null)
-            {
-                TempData["Error"] = "This post is already in your favorites!";
-                return RedirectToAction("Index", "MyFavorites");
-
-            }
-
-            var favorite = new FavoriteViews
-            {
-                UserId = Guid.Parse(userId),
-                LocationId = locationId
-            };
-
-            _context.FavoriteViews.Add(favorite);
-            await _context.SaveChangesAsync();
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _myFavoritesService.AddToFavoritesAsync(userId, locationId);
 
             TempData["Success"] = "Added to favorites!";
-            return RedirectToAction("Index", "MyFavorites");
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: Remove from Favorites
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Remove(Guid locationId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            try
             {
-                return Unauthorized();
+                await _myFavoritesService.RemoveFromFavoritesAsync(userId, locationId);
+                TempData["Success"] = "Removed from favorites!";
+            }
+            catch (KeyNotFoundException)
+            {
+                TempData["Error"] = "Favorite not found.";
             }
 
-            var favorite = await _context.FavoriteViews
-                .FirstOrDefaultAsync(f => f.UserId == Guid.Parse(userId) && f.LocationId == locationId);
-
-            if (favorite == null)
-            {
-                TempData["Error"] = "This post is not in your favorites!";
-                return RedirectToAction(nameof(Index)); // Пренасочване към списъка с любими
-            }
-
-            _context.FavoriteViews.Remove(favorite);
-            await _context.SaveChangesAsync();
-
-            TempData["Success"] = "Removed from favorites!"; // Съобщение за успех
-            return RedirectToAction(nameof(Index)); // Пренасочване към списъка с любими
+            return RedirectToAction(nameof(Index));
         }
     }
 }

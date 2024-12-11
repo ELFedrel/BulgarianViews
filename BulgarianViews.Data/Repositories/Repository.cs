@@ -161,8 +161,30 @@ namespace BulgarianViews.Data.Repositories
 
         public void RemoveRange(IEnumerable<TType> entities)
         {
-            _dbSet.RemoveRange(entities);
+            foreach (var entity in entities)
+            {
+                _dbSet.Remove(entity);
+            }
             _context.SaveChanges();
         }
+
+        public async Task<bool> DeleteByCompositeKeyAsync(Guid userId, Guid locationId)
+        {
+            var favorite = await _context.FavoriteViews
+                .FirstOrDefaultAsync(f =>
+                    f.UserId == userId &&
+                    f.LocationId == locationId);
+
+            if (favorite == null)
+            {
+                return false;
+            }
+
+            _context.FavoriteViews.Remove(favorite);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        
     }
 }

@@ -3,6 +3,7 @@ using BulgarianViews.Data.Repositories.Interfaces;
 using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Comment;
 using BulgarianViews.Web.ViewModels.LocationPost;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,23 @@ namespace BulgarianViews.Services.Data
         private readonly IRepository<Tag, Guid> _tagRepository;
         private readonly IRepository<Comment, Guid> _commentRepository;
         private readonly IRepository<Rating, Guid> _ratingRepository;
+        private readonly IFavoriteViewsRepository _favoriteViewsRepository;
+
+
 
         public LocationPostService(
             IRepository<LocationPost, Guid> locationPostRepository,
             IRepository<Tag, Guid> tagRepository,
             IRepository<Comment, Guid> commentRepository,
-            IRepository<Rating, Guid> ratingRepository)
+            IRepository<Rating, Guid> ratingRepository,
+            IFavoriteViewsRepository favoriteViewsRepository)
+
         {
             _locationPostRepository = locationPostRepository;
             _tagRepository = tagRepository;
             _commentRepository = commentRepository;
             _ratingRepository = ratingRepository;
+            _favoriteViewsRepository = favoriteViewsRepository;
         }
 
         public async Task<List<LocationPostIndexViewModel>> GetAllPostsAsync()
@@ -178,7 +185,6 @@ namespace BulgarianViews.Services.Data
         public async Task<LocationPostDeleteViewModel> GetPostForDeleteAsync(Guid id, Guid userId)
         {
             var post = await _locationPostRepository.GetByIdAsync(id);
-
             if (post == null || post.UserId != userId)
             {
                 throw new UnauthorizedAccessException("Access denied or post not found");
@@ -198,6 +204,7 @@ namespace BulgarianViews.Services.Data
                 .GetAllAttached()
                 .Include(p => p.Comments)
                 .Include(p => p.Ratings)
+                .Include(p => p.Favorites)
                 .FirstOrDefaultAsync(p => p.Id == model.Id);
 
             if (post == null || post.UserId != userId)
@@ -205,28 +212,52 @@ namespace BulgarianViews.Services.Data
                 throw new UnauthorizedAccessException("Access denied or post not found");
             }
 
-            //var favoriteViews = await _favoriteViewsRepository
-            // .FindAsync(fv => fv.LocationId == model.Id);
 
-            //_favoriteViewsRepository.RemoveRange(favoriteViews);
+            if (post.Favorites != null && post.Favorites.Any())
+            {
+                foreach (var favorite in post.Favorites.ToList())
+                {
+                    if (favorite == null || favorite.UserId == Guid.Empty || favorite.LocationId == Guid.Empty)
+                    {
+                        throw new Exception("Invalid favorite object found.");
+                    }
 
-            //// Изтриване на самия пост
-            //await _locationPostRepository.DeleteAsync(post.Id);
+                    var success = await _favoriteViewsRepository.RemoveFavoriteAsync(favorite.UserId, favorite.LocationId);
+                    if (!success)
+                    {
+                        throw new Exception($"Failed to delete favorite for UserId: {favorite.UserId}, LocationId: {favorite.LocationId}");
+                    }
+                }
+            }
 
-            _commentRepository.RemoveRange(post.Comments);
 
+            if (post.Comments != null && post.Comments.Any())
+            {
+                _commentRepository.RemoveRange(post.Comments);
+            }
 
-            _ratingRepository.RemoveRange(post.Ratings);
+            
+            if (post.Ratings != null && post.Ratings.Any())
+            {
+                _ratingRepository.RemoveRange(post.Ratings);
+            }
 
-
+           
             await _locationPostRepository.DeleteAsync(post.Id);
         }
+
 
 
         public async Task<List<Tag>> GetTagsAsync()
         {
             
             return (await _tagRepository.GetAllAsync()).ToList();
+        }
+
+        
+        public async Task<LocationPost> GetById(Guid id)
+        {
+            return await _locationPostRepository.GetByIdAsync(id);
         }
     }
 }

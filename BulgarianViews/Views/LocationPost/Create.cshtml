@@ -29,7 +29,7 @@
 
         <label asp-for="@Model.TagId" class="form-label-add-edit">Select Tag</label>
         <select asp-for="@Model.TagId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.Tags, "Id", "Name"))">
-            <option value="">Select Fishing Technique...</option>
+            <option value="">Select Tag</option>
         </select>
         <span asp-validation-for="@Model.TagId" class="text-danger"></span>
 

@@ -6,6 +6,7 @@ using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Services.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BulgarianViews.Data.Seeders;
 
 namespace BulgarianViews
 {
@@ -27,6 +28,13 @@ namespace BulgarianViews
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
 
             })
             .AddRoles<IdentityRole<Guid>>()
@@ -39,10 +47,10 @@ namespace BulgarianViews
             builder.Services.AddScoped<IRepository<Tag, Guid>, Repository<Tag, Guid>>();
             builder.Services.AddScoped<IRepository<Rating, Guid>, Repository<Rating, Guid>>();
             builder.Services.AddScoped<IRepository<LocationPost, Guid>, Repository<LocationPost, Guid>>();
-           // builder.Services.AddScoped<IRepository<Location, Guid>, Repository<Location, Guid>>();
             builder.Services.AddScoped<IRepository<Comment, Guid>, Repository<Comment, Guid>>();
-            builder.Services.AddScoped<IRepository<FavoriteViews, object>, Repository<FavoriteViews, object>>();
             builder.Services.AddScoped<IRepository<ApplicationUser, Guid>, Repository<ApplicationUser, Guid>>();
+
+            builder.Services.AddScoped<IFavoriteViewsRepository, FavoriteViewsRepository>();
 
 
 
@@ -51,9 +59,17 @@ namespace BulgarianViews
             builder.Services.AddScoped<IRatingService, RatingService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<ILocationPostService, LocationPostService>();
-          
+            builder.Services.AddScoped<IMyFavoritesService, MyFavoritesService>();
+
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                Task.Run(() => SeedData.SeedRolesAsync(roleManager, userManager)).GetAwaiter().GetResult();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -75,6 +91,12 @@ namespace BulgarianViews
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "admin",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+            
 
             app.MapControllerRoute(
                 name: "default",

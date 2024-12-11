@@ -35,5 +35,6 @@ namespace BulgarianViews.Data.Repositories.Interfaces
         Task<int> CountAsync();
         Task<TType> GetByIdIncludingAsync(TId id, params Expression<Func<TType, object>>[] includeProperties);
         void RemoveRange(IEnumerable<TType> entities);
+        Task<bool> DeleteByCompositeKeyAsync(Guid userId, Guid locationId);
     }
 }

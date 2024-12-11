@@ -18,5 +18,6 @@ namespace BulgarianViews.Services.Data.Interfaces
         Task<LocationPostDeleteViewModel> GetPostForDeleteAsync(Guid id, Guid userId);
         Task DeletePostAsync(LocationPostDeleteViewModel model, Guid userId);
         Task<List<Tag>> GetTagsAsync();
+        Task<LocationPost> GetById(Guid id);
     }
 }

@@ -2,12 +2,15 @@
 using BulgarianViews.Data.Models;
 using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Comment;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace BulgarianViews.Controllers
 {
+  
+    
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;
@@ -48,10 +51,13 @@ namespace BulgarianViews.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Delete(Guid id, Guid postId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
+            var isAdmin = User.IsInRole("Admin");
+
+            if (userId == null && !isAdmin)
             {
                 return Unauthorized();
             }

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BulgarianViews.Web.ViewModels.Comment.CommentViewModel>
+
+@{
+    ViewData["Title"] = "Manage Comments";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Manage Comments</h1>
+
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="table-light">
+            <tr>
+                <th>User</th>
+                <th>Content</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comment in Model)
+            {
+                <tr>
+                    <td>@comment.UserName</td>
+                    <td>@comment.Content</td>
+                    <td>@comment.DateCreated.ToString("g")</td>
+                    <td>
+                        <form asp-action="Delete" method="post" asp-route-id="@comment.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+ 

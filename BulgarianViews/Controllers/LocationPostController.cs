@@ -12,6 +12,7 @@ using System.Security.Claims;
 namespace BulgarianViews.Controllers
 {
     [Authorize]
+
     public class LocationPostController : Controller
     {
         private readonly ILocationPostService _locationPostService;

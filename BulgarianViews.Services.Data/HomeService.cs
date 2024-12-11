@@ -1,6 +1,7 @@
 ﻿using BulgarianViews.Data.Models;
 using BulgarianViews.Data.Repositories.Interfaces;
 using BulgarianViews.Services.Data.Interfaces;
+using BulgarianViews.Web.ViewModels.Admin;
 using BulgarianViews.Web.ViewModels.Home;
 using BulgarianViews.Web.ViewModels.LocationPost;
 using Microsoft.EntityFrameworkCore;
@@ -104,6 +105,35 @@ namespace BulgarianViews.Services.Data
                 TotalComments = totalComments,
                 RandomPost = randomPost
             };
+        }
+
+        public async Task<int> GetTotalUsersAsync()
+        {
+            return await _userRepository.CountAsync();
+        }
+
+        public async Task<int> GetTotalPostsAsync()
+        {
+            return await _postRepository.CountAsync();
+        }
+
+        public async Task<int> GetTotalCommentsAsync()
+        {
+            return await _commentRepository.CountAsync();
+        }
+
+        public async Task<List<RecentActivityViewModel>> GetRecentActivitiesAsync()
+        {
+            return await _commentRepository
+                .GetAllAttached()
+                .Take(10)
+                .Select(c => new RecentActivityViewModel
+                {
+                    UserName = c.User.UserName,
+                    ActionDescription = $"Commented on post: {c.LocationPost.Title}",
+                    
+                })
+                .ToListAsync();
         }
     }
 }

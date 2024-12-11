@@ -59,5 +59,30 @@ namespace BulgarianViews.Services.Data
 
             return await _commentRepository.DeleteAsync(commentId);
         }
+
+
+        public async Task<IEnumerable<CommentViewModel>> GetAllCommentsAsync()
+        {
+            var comments = await _commentRepository.GetAllAsync();
+
+            return comments.Select(c => new CommentViewModel
+            {
+                Id = c.Id,
+                Content = c.Content,
+                UserName = _userRepository.GetById(c.UserId)?.UserName ?? "Unknown",
+                DateCreated = c.DateCreated
+            });
+        }
+
+        public async Task<bool> AdminDeleteCommentAsync(Guid commentId)
+        {
+            var comment = await _commentRepository.GetByIdAsync(commentId);
+            if (comment == null)
+            {
+                return false;
+            }
+
+            return await _commentRepository.DeleteAsync(commentId);
+        }
     }
 }

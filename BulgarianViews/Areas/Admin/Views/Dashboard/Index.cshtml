@@ -1,0 +1,53 @@
+﻿@model BulgarianViews.Web.ViewModels.Admin.AdminDashboardViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+    <h1 class="display-4 text-center">Admin Dashboard</h1>
+
+
+    <div class="row text-center mt-4">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Total Users</h5>
+                    <p class="display-4 fw-bold text-dark">@Model.TotalUsers</p>
+                    <a href="/Admin/User/Index" class="btn btn-outline-primary btn-sm">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Total Posts</h5>
+                    <p class="display-4 fw-bold text-dark">@Model.TotalPosts</p>
+                    <a asp-area="Admin" asp-controller="AdminPost" asp-action="Index" class="btn btn-outline-primary btn-sm">Manage Posts</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">Total Comments</h5>
+                    <p class="display-4 fw-bold text-dark">@Model.TotalComments</p>
+                    <a href="/Admin/AdminComment/Index" class="btn btn-outline-danger btn-sm">Manage Comments</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3 class="mt-5">Recent Activities</h3>
+    <ul class="list-group mt-3">
+        @foreach (var activity in Model.RecentActivities)
+        {
+            <li class="list-group-item">
+                <strong>@activity.UserName</strong> @activity.ActionDescription
+                
+            </li>
+        }
+    </ul>
+</div>

@@ -11,6 +11,7 @@ using BulgarianViews.Services.Data.Interfaces;
 
 namespace BulgarianViews.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly IHomeService _homeService;

@@ -12,5 +12,7 @@ namespace BulgarianViews.Services.Data.Interfaces
         Task AddCommentAsync(CreateCommentViewModel model, Guid userId);
         Task<IEnumerable<CommentViewModel>> GetCommentsByPostIdAsync(Guid postId);
         Task<bool> DeleteCommentAsync(Guid commentId, Guid userId);
+        Task<IEnumerable<CommentViewModel>> GetAllCommentsAsync();
+        Task<bool> AdminDeleteCommentAsync(Guid commentId);
     }
 }

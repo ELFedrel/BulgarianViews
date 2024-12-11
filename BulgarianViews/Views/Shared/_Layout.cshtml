@@ -30,6 +30,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="MyFavorites" asp-action="Index">My Favorites</a>
                         </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin Dashboard</a>
+                            </li>
+                        }
+
+
                     </ul>
 
                    

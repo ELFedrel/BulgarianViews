@@ -1,0 +1,37 @@
+﻿@model List<BulgarianViews.Web.ViewModels.Admin.ManagePostViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Manage Posts</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Publisher</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td>@post.Description</td>
+                    <td>@post.PublisherName</td>
+                    <td>@post.AverageRating</td>
+                    <td>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@post.Id" />
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
