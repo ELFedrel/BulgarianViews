@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BulgarianViews.Services.Data\BulgarianViews.Services.Data.csproj" />
     <ProjectReference Include="..\BulgarianViews\BulgarianViews.csproj" />
   </ItemGroup>
 

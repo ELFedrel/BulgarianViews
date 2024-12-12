@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace BulgarianViews.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -13,7 +14,7 @@ namespace BulgarianViews.Areas.Admin.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
-        private readonly ApplicationDbContext _dbContext;  
+        private readonly ApplicationDbContext _dbContext;
 
         public UserController(UserManager<ApplicationUser> userManager,
                               RoleManager<IdentityRole<Guid>> roleManager,
@@ -115,8 +116,6 @@ namespace BulgarianViews.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
@@ -127,35 +126,35 @@ namespace BulgarianViews.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            
+
             using (var transaction = await _dbContext.Database.BeginTransactionAsync())
             {
                 try
                 {
-                    
+
                     var relatedFavorites = _dbContext.FavoriteViews.Where(f => f.UserId == id).ToList();
                     if (relatedFavorites.Any())
                     {
                         _dbContext.FavoriteViews.RemoveRange(relatedFavorites);
-                        await _dbContext.SaveChangesAsync();  
+                        await _dbContext.SaveChangesAsync();
                     }
 
                     var relatedComments = _dbContext.Comments.Where(c => c.UserId == id).ToList();
                     if (relatedComments.Any())
                     {
                         _dbContext.Comments.RemoveRange(relatedComments);
-                        await _dbContext.SaveChangesAsync();  
+                        await _dbContext.SaveChangesAsync();
                     }
 
-                    
+
                     var relatedRatings = _dbContext.Ratings.Where(r => r.UserId == id).ToList();
                     if (relatedRatings.Any())
                     {
                         _dbContext.Ratings.RemoveRange(relatedRatings);
-                        await _dbContext.SaveChangesAsync();  
+                        await _dbContext.SaveChangesAsync();
                     }
 
-                    
+
                     var result = await _userManager.DeleteAsync(user);
                     if (!result.Succeeded)
                     {
@@ -163,12 +162,12 @@ namespace BulgarianViews.Areas.Admin.Controllers
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
-                        
+
                         await transaction.RollbackAsync();
                         return RedirectToAction(nameof(Index));
                     }
 
-                    
+
                     await transaction.CommitAsync();
 
                     TempData["Success"] = "User deleted successfully.";
@@ -182,6 +181,8 @@ namespace BulgarianViews.Areas.Admin.Controllers
                 }
             }
         }
+
+
 
     }
 }

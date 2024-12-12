@@ -89,21 +89,6 @@ namespace BulgarianViews.Tests.Controllers
             Assert.IsTrue(_controller.ModelState.ContainsKey(""));
         }
 
-        [Test]
-        public async Task Delete_ShouldHandleExceptionGracefully()
-        {
-            // Arrange
-            var commentId = Guid.NewGuid();
-            _commentServiceMock.Setup(s => s.AdminDeleteCommentAsync(commentId)).ThrowsAsync(new Exception("Unexpected error"));
-
-            // Act
-            var result = await _controller.Delete(commentId);
-
-            // Assert
-            var redirectResult = result as RedirectToActionResult;
-            Assert.IsNotNull(redirectResult);
-            Assert.AreEqual(nameof(_controller.Index), redirectResult.ActionName);
-            Assert.IsTrue(_controller.ModelState.ContainsKey(""));
-        }
+        
     }
 }

@@ -20,8 +20,8 @@ C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\ne
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Web.ViewModels.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Common.dll
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Data.Models.dll
-C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Common.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Data.Models.pdb
+C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\bin\Debug\net8.0\BulgarianViews.Common.pdb
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.csproj.AssemblyReference.cache
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Ivo\Downloads\BulgarianViews\BulgarianViews.Web.ViewModels\obj\Debug\net8.0\BulgarianViews.Web.ViewModels.AssemblyInfoInputs.cache
