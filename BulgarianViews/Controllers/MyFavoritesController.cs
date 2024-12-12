@@ -22,10 +22,18 @@ namespace BulgarianViews.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var favorites = await _myFavoritesService.GetUserFavoritesAsync(userId);
-
-            return View(favorites);
+          
+            try
+            {
+                var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var favorites = await _myFavoritesService.GetUserFavoritesAsync(userId);
+                return View(favorites);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"An error occurred: {ex.Message}";
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPost]

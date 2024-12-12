@@ -2,6 +2,7 @@
 using BulgarianViews.Data.Repositories.Interfaces;
 using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Comment;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,11 @@ namespace BulgarianViews.Services.Data
 
         public async Task AddCommentAsync(CreateCommentViewModel model, Guid userId)
         {
+            if (string.IsNullOrWhiteSpace(model.Content))
+            {
+                throw new ArgumentException("Comment content cannot be empty.");
+            }
+
             var comment = new Comment
             {
                 Id = Guid.NewGuid(),
@@ -38,7 +44,7 @@ namespace BulgarianViews.Services.Data
         public async Task<IEnumerable<CommentViewModel>> GetCommentsByPostIdAsync(Guid postId)
         {
             var comments = await _commentRepository
-                .FindAsync(c => c.LocationPostId == postId);
+         .FindAsync(c => c.LocationPostId == postId);
 
             return comments.Select(c => new CommentViewModel
             {
@@ -57,7 +63,8 @@ namespace BulgarianViews.Services.Data
                 return false;
             }
 
-            return await _commentRepository.DeleteAsync(commentId);
+             await _commentRepository.DeleteAsync(commentId);
+            return true;
         }
 
 

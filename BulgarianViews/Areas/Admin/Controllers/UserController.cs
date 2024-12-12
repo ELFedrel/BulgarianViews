@@ -24,7 +24,7 @@ namespace BulgarianViews.Areas.Admin.Controllers
             _dbContext = dbContext;  
         }
 
-        // GET: Admin/User/Index
+        
         public async Task<IActionResult> Index()
         {
             var users = _userManager.Users.ToList();
@@ -76,6 +76,8 @@ namespace BulgarianViews.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                model.AllRoles ??= new List<string>();
+                model.Roles ??= new List<string>();
                 return View(model);
             }
 
@@ -88,13 +90,14 @@ namespace BulgarianViews.Areas.Admin.Controllers
             user.UserName = model.UserName;
             user.Email = model.Email;
 
-            var userRoles = await _userManager.GetRolesAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(user) ?? new List<string>();
 
             
+            model.Roles ??= new List<string>();
+
             var rolesToRemove = userRoles.Except(model.Roles).ToList();
             await _userManager.RemoveFromRolesAsync(user, rolesToRemove);
 
-            
             var rolesToAdd = model.Roles.Except(userRoles).ToList();
             await _userManager.AddToRolesAsync(user, rolesToAdd);
 
@@ -112,7 +115,8 @@ namespace BulgarianViews.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: Admin/User/Delete/{id}
+
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
@@ -136,23 +140,22 @@ namespace BulgarianViews.Areas.Admin.Controllers
                         await _dbContext.SaveChangesAsync();  
                     }
 
-                    // Премахване на свързани коментари
                     var relatedComments = _dbContext.Comments.Where(c => c.UserId == id).ToList();
                     if (relatedComments.Any())
                     {
                         _dbContext.Comments.RemoveRange(relatedComments);
-                        await _dbContext.SaveChangesAsync();  // Записваме промените
+                        await _dbContext.SaveChangesAsync();  
                     }
 
-                    // Премахване на свързани рейтинги
+                    
                     var relatedRatings = _dbContext.Ratings.Where(r => r.UserId == id).ToList();
                     if (relatedRatings.Any())
                     {
                         _dbContext.Ratings.RemoveRange(relatedRatings);
-                        await _dbContext.SaveChangesAsync();  // Записваме промените
+                        await _dbContext.SaveChangesAsync();  
                     }
 
-                    // След като премахнем всички свързани записи, изтриваме потребителя
+                    
                     var result = await _userManager.DeleteAsync(user);
                     if (!result.Succeeded)
                     {
@@ -160,12 +163,12 @@ namespace BulgarianViews.Areas.Admin.Controllers
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
-                        // Отменяме транзакцията, ако има грешка
+                        
                         await transaction.RollbackAsync();
                         return RedirectToAction(nameof(Index));
                     }
 
-                    // Завършваме транзакцията
+                    
                     await transaction.CommitAsync();
 
                     TempData["Success"] = "User deleted successfully.";
@@ -173,7 +176,6 @@ namespace BulgarianViews.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Ако нещо се обърка, отменяме транзакцията
                     await transaction.RollbackAsync();
                     ModelState.AddModelError(string.Empty, $"Error deleting user: {ex.Message}");
                     return RedirectToAction(nameof(Index));

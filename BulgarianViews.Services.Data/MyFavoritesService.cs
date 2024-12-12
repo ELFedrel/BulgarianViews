@@ -35,6 +35,11 @@ namespace BulgarianViews.Services.Data
 
         public async Task AddToFavoritesAsync(Guid userId, Guid locationId)
         {
+            if (locationId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(locationId), "LocationId cannot be empty.");
+            }
+
             var favorite = new FavoriteViews
             {
                 UserId = userId,

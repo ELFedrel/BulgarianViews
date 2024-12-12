@@ -58,15 +58,18 @@ namespace BulgarianViews.Areas.Admin.Controllers
             }
             catch (UnauthorizedAccessException)
             {
-                ModelState.AddModelError("", "You don't have permission to delete this post.");
+                TempData["Error"] = "You don't have permission to delete this post."; 
+
             }
             catch (KeyNotFoundException)
             {
-                ModelState.AddModelError("", "The post was not found.");
+                TempData["Error"] = "The post was not found.";
+
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", $"An error occurred while deleting the post: {ex.Message}");
+                TempData["Error"] = $"An error occurred while deleting the post: {ex.Message}"; 
+
             }
 
             return RedirectToAction(nameof(Index));

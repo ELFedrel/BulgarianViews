@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Common", "Bu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2BCF6C40-1790-45C9-9739-EEFBCF4414FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Services.Data", "BulgarianViews.Services.Data\BulgarianViews.Services.Data.csproj", "{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulgarianViews.Services.Data", "BulgarianViews.Services.Data\BulgarianViews.Services.Data.csproj", "{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulgarianViews.Tests", "BulgarianViews.Tests\BulgarianViews.Tests.csproj", "{7F7BF512-6163-4D8C-844D-78E90832CF56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A55B24F1-D45F-40EE-AA0C-D4668E5388B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7BF512-6163-4D8C-844D-78E90832CF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7BF512-6163-4D8C-844D-78E90832CF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7BF512-6163-4D8C-844D-78E90832CF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7BF512-6163-4D8C-844D-78E90832CF56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

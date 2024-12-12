@@ -22,16 +22,37 @@ namespace BulgarianViews.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var model = await _profileService.GetProfileAsync(userId);
-            return View(model);
+            try
+            {
+                var model = await _profileService.GetProfileAsync(userId);
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound(); 
+            }
+            catch (Exception)
+            {
+                
+                return StatusCode(500, "An unexpected error occurred.");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit()
         {
+           
+
             var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var model = await _profileService.GetProfileForEditAsync(userId);
-            return View(model);
+            try
+            {
+                var model = await _profileService.GetProfileForEditAsync(userId);
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         [HttpPost]
@@ -53,8 +74,16 @@ namespace BulgarianViews.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
-            var model = await _profileService.GetUserDetailsAsync(id);
-            return View(model);
+            try
+            {
+                var model = await _profileService.GetUserDetailsAsync(id);
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            
         }
 
         [HttpGet]

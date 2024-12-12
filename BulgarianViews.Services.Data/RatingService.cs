@@ -27,7 +27,7 @@ namespace BulgarianViews.Services.Data
             if (rating < 1 || rating > 5)
                 throw new ArgumentException("Rating must be between 1 and 5.");
 
-            
+            // Проверка за съществуващ рейтинг
             var existingRating = (await _ratingRepository.FindAsync(r => r.UserId == userId && r.LocationPostId == postId))
                 .FirstOrDefault();
 
@@ -47,6 +47,12 @@ namespace BulgarianViews.Services.Data
                 };
 
                 await _ratingRepository.AddAsync(newRating);
+
+                var postForAddingRating = await _postRepository.GetByIdIncludingAsync(postId, p => p.Ratings);
+                if (postForAddingRating != null)
+                {
+                    postForAddingRating.Ratings.Add(newRating);
+                }
             }
 
             

@@ -292,9 +292,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj"
-              },
               "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj": {
                 "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj"
               }

@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v8.0": {
       "BulgarianViews.Web.ViewModels/1.0.0": {
         "dependencies": {
-          "BulgarianViews.Common": "1.0.0",
           "BulgarianViews.Data.Models": "1.0.0",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0"
         },

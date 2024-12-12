@@ -1,4 +1,6 @@
 ﻿using BulgarianViews.Data;
+using BulgarianViews.Data.Models;
+using BulgarianViews.Data.Repositories.Interfaces;
 using BulgarianViews.Services.Data.Interfaces;
 using BulgarianViews.Web.ViewModels.Profile;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +14,20 @@ namespace BulgarianViews.Services.Data
 {
     public class ProfileService : IProfileService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository<ApplicationUser, Guid> _userRepository;
+        private readonly IRepository<LocationPost, Guid> _postRepository;
 
-        public ProfileService(ApplicationDbContext context)
+        public ProfileService(
+            IRepository<ApplicationUser, Guid> userRepository,
+            IRepository<LocationPost, Guid> postRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
+            _postRepository = postRepository;
         }
 
         public async Task<ProfileViewModel> GetProfileAsync(Guid userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _userRepository.GetByIdAsync(userId);
 
             if (user == null)
                 throw new KeyNotFoundException("User not found.");
@@ -36,7 +42,7 @@ namespace BulgarianViews.Services.Data
 
         public async Task<ProfileEditViewModel> GetProfileForEditAsync(Guid userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _userRepository.GetByIdAsync(userId);
 
             if (user == null)
                 throw new KeyNotFoundException("User not found.");
@@ -51,7 +57,7 @@ namespace BulgarianViews.Services.Data
 
         public async Task UpdateProfileAsync(Guid userId, ProfileEditViewModel model)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _userRepository.GetByIdAsync(userId);
 
             if (user == null)
                 throw new KeyNotFoundException("User not found.");
@@ -73,30 +79,26 @@ namespace BulgarianViews.Services.Data
                 user.ProfilePictureURL = $"/images/{uniqueFileName}";
             }
 
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            await _userRepository.UpdateAsync(user);
         }
 
         public async Task<List<MyPostViewModel>> GetUserPostsAsync(Guid userId)
         {
-            var posts = await _context.LocationPosts
-                .Where(lp => lp.UserId == userId)
-                .Select(lp => new MyPostViewModel
-                {
-                    Id = lp.Id,
-                    Title = lp.Title,
-                    Description = lp.Description,
-                    PhotoURL = lp.PhotoURL,
-                    AverageRating = lp.AverageRating
-                })
-                .ToListAsync();
+            var posts = await _postRepository.FindAsync(lp => lp.UserId == userId);
 
-            return posts;
+            return posts.Select(lp => new MyPostViewModel
+            {
+                Id = lp.Id,
+                Title = lp.Title,
+                Description = lp.Description,
+                PhotoURL = lp.PhotoURL,
+                AverageRating = lp.AverageRating
+            }).ToList();
         }
 
         public async Task<ProfileViewModel> GetUserDetailsAsync(Guid userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _userRepository.GetByIdAsync(userId);
 
             if (user == null)
                 throw new KeyNotFoundException("User not found.");

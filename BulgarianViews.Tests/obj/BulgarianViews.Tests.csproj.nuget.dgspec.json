@@ -292,21 +292,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj"
-              },
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj"
-              },
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data\\BulgarianViews.Data.csproj"
-              },
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Services.Data\\BulgarianViews.Services.Data.csproj"
-              },
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Web.ViewModels\\BulgarianViews.Web.ViewModels.csproj"
-              },
               "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\BulgarianViews.csproj": {
                 "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews\\BulgarianViews.csproj"
               }
@@ -323,13 +308,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.6.0, )"
             },
+            "MockQueryable.Moq": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
+            },
+            "Moq.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.1.2, )"
+            },
             "NUnit": {
               "target": "Package",
-              "version": "[3.13.3, )"
+              "version": "[3.13.1, )"
             },
             "NUnit.Analyzers": {
               "target": "Package",
@@ -388,9 +389,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj": {
-                "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Common\\BulgarianViews.Common.csproj"
-              },
               "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj": {
                 "projectPath": "C:\\Users\\Ivo\\Downloads\\BulgarianViews\\BulgarianViews.Data.Models\\BulgarianViews.Data.Models.csproj"
               }

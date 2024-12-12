@@ -125,7 +125,14 @@ namespace BulgarianViews.Controllers
             {
                 return NotFound();
             }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                return NotFound(); 
+            }
         }
+
 
         // GET: Delete
         [HttpGet]
