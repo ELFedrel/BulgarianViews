@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BulgarianViews.Services.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c9cf49d0ab62298279229af499b98cde1ad1ee0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae4bd0068b63550ffde87beb31bb20b9e6c4c6c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BulgarianViews.Services.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BulgarianViews.Services.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

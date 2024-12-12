@@ -5,9 +5,8 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="container mt-4">
-    <h1 class="display-4 text-center">Admin Dashboard</h1>
-
+<div id="admin-dashboard" class="container mt-4">
+    <h1 class="display-4 text-center">Admin</h1>
 
     <div class="row text-center mt-4">
         <div class="col-md-4 mb-4">
@@ -37,17 +36,8 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-    <h3 class="mt-5">Recent Activities</h3>
-    <ul class="list-group mt-3">
-        @foreach (var activity in Model.RecentActivities)
-        {
-            <li class="list-group-item">
-                <strong>@activity.UserName</strong> @activity.ActionDescription
-                
-            </li>
-        }
-    </ul>
 </div>
+
+
+   
